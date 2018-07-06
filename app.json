@@ -1,0 +1,7 @@
+{
+        "name": "york-app",
+        "description": "york demo app",
+        "repository": "https://github.com/conceptcodes/app-repo",
+        "logo": "http://pereless360.com/img/SP/Ghost/360-logo-white.png",
+        "keywords": ["ionic3", "heroku", "pereless360"]
+    }
