@@ -25680,7 +25680,7 @@ ion-navbar.toolbar {
 
 page-home #floating-panel {
   position: absolute;
-  top: 10px;
+  top: 50px;
   right: 5px;
   z-index: 5;
   padding: 5px;
@@ -25691,10 +25691,4 @@ page-home #floating-panel {
 
 page-home #map {
   height: 100%;
-}
-
-page-home ion-card-header {
-  background: crimson;
-  color: white !important;
-  text-align: center !important;
 }

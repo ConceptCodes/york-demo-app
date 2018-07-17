@@ -1,5 +1,5 @@
 import { Component,  ViewChild, ElementRef } from '@angular/core';
-import { NavController, ToastController } from 'ionic-angular';
+import { NavController, ToastController, ModalController } from 'ionic-angular';
 import { MapGenieProvider } from '../../providers/map-genie/map-genie';
 
 declare var google;
@@ -11,13 +11,16 @@ declare var google;
 export class HomePage {
   @ViewChild('map') mapElement: ElementRef;
   map: any;
-  constructor(public toast: ToastController, public mapGenie: MapGenieProvider, public navCtrl: NavController) { }
+  latLng: any;
+  data: any;
+  constructor(public modal: ModalController, public toast: ToastController, public mapGenie: MapGenieProvider, public navCtrl: NavController) { this.latLng = { lat: 39.9666628 , lng: -76.749997}; }
     
     ionViewWillLoad(){ 
       this.initMap();  
       this.mapGenie.AddSections(this.map); 
-     // google.maps.event.addListener(this.mapGenie.red_zone, 'click', this.mapGenie.SectionContent('services for red section', this.map));
-     // google.maps.event.addListener(this.mapGenie.yellow_zone,'click', this.mapGenie.SectionContent('services for yellow section', this.map));
+      google.maps.event.addListener(this.mapGenie.red_zone, 'click',  (event) =>  this.presentModal({section_colour: 'red', message:'Red Section Services'}) );  
+      google.maps.event.addListener(this.mapGenie.yellow_zone, 'click',  (event) =>   this.presentModal({section_colour: 'yellow', message:'Yellow Section Services'}));  
+      google.maps.event.addListener(this.mapGenie.green_zone, 'click', (event) => this.presentModal({section_colour: 'green', message:'Green Section Services'}));
      }
   
 
@@ -135,20 +138,13 @@ export class HomePage {
       ],
       {name: 'Styled Map'});
 
-    let latLng = { lat: 39.9666628 , lng: -76.749997};
-     this.map = new google.maps.Map(this.mapElement.nativeElement, {
-      center: latLng,
-      zoom: 15
-    });
+     this.map = new google.maps.Map(this.mapElement.nativeElement, {  center: this.latLng,  zoom: 15  });
     this.map.mapTypes.set('styled_map', styledMapType);
     this.map.setMapTypeId('styled_map');
   } 
 
- listR(){ this.mapGenie.listPlaces(this.map,'restaurant'); }
+  presentModal(data){  this.modal.create('ServicesPage', data).present();  }
 
- listS(){ this.mapGenie.listPlaces(this.map,'stores'); }
-
- listB(){ this.mapGenie.listPlaces(this.map,'bars'); }
-
+  list(key) { this.mapGenie.listPlaces(this.map,key); }
 
 }

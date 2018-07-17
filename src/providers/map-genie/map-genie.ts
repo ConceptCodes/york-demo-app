@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { ToastController } from 'ionic-angular';
+
 
 declare var google;
 
@@ -6,12 +8,12 @@ declare var google;
 export class MapGenieProvider {
   infowindow: any;
   choice: string;
-  latLng: any;
   places : any;
+  latLng: any;
   red_zone: any;
   yellow_zone: any;
   green_zone: any;
-  constructor() {  this.infowindow = new google.maps.InfoWindow; }
+  constructor(public toast: ToastController) { this.latLng = { lat: 39.9666628 , lng: -76.749997};  this.infowindow = new google.maps.InfoWindow; }
 
   AddSections(map){
     var red_zone_coords = [
@@ -101,23 +103,22 @@ export class MapGenieProvider {
     this.green_zone.setMap(map);
   }
 
+  presentToast(msg:string){ this.toast.create({  message: msg,  duration: 3000,  position: 'top'  });  }
+
   SectionContent(content,map) {
     this.infowindow.setContent(content);
    // this.infowindow.setPosition(loc);
     this.infowindow.open(map);
   }
 
-
-  
- 
-
   listPlaces(map,key:string){
+  
     this.places = [];
     let service = new google.maps.places.PlacesService(map);
-    service.nearbySearch({
-      location: { lat: 39.9666628 , lng: -76.749997},
-      radius: 1000, 
-      type: [`${key}`]
+    service.textSearch({
+        location: this.latLng,
+        radius: '500',
+        query: key
     }, (results,status) => {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
         for (var i = 0; i < results.length; i++) {
@@ -126,20 +127,21 @@ export class MapGenieProvider {
         }
       }
     });
+  console.log(key);
   }
+
+  clearMarkers(){  this.listPlaces(null,'');}
+
+  deleteMarkers() {  this.clearMarkers();  this.places = [];  }
 
   createMarker(map,place) {
    var placeLoc = place.geometry.location;
     var marker = new google.maps.Marker({
       map: map,
       position: placeLoc,
-      animation: google.maps.Animation.DROP,
+      animation: google.maps.Animation.BOUNCE,
     });
-  
-    google.maps.event.addListener(marker, 'click', ()=> {
-      this.infowindow.setContent(place.name);
-       this.infowindow.open(map, this);
-    });
+    google.maps.event.addListener(marker, 'click', (event)=> {  this.infowindow.setContent(place.name)  });
   
   }
 

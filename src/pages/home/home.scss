@@ -1,7 +1,7 @@
     page-home {
         #floating-panel {
           position: absolute;
-          top: 10px;
+          top: 50px;
           right: 5px;
           z-index: 5;
           padding: 5px;
@@ -9,14 +9,6 @@
           line-height: 30px;
           padding-left: 10px;
         }
-        #map {
-          height: 100%;
-        }
-
-        ion-card-header{
-          background: crimson;
-          color: white !important;
-          text-align: center !important;
-        }
+        #map {  height: 100%;  }
       }
 
