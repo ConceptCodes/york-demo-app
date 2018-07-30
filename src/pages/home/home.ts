@@ -1,5 +1,5 @@
 import { Component,  ViewChild, ElementRef } from '@angular/core';
-import { NavController, ToastController, ModalController } from 'ionic-angular';
+import { NavController, ToastController, ModalController, FabContainer } from 'ionic-angular';
 import { MapGenieProvider } from '../../providers/map-genie/map-genie';
 
 declare var google;
@@ -18,9 +18,9 @@ export class HomePage {
     ionViewWillLoad(){ 
       this.initMap();  
       this.mapGenie.AddSections(this.map); 
-      google.maps.event.addListener(this.mapGenie.red_zone, 'click',  (event) =>  this.presentModal({section_colour: 'red', message:'Red Section Services'}) );  
-      google.maps.event.addListener(this.mapGenie.yellow_zone, 'click',  (event) =>   this.presentModal({section_colour: 'yellow', message:'Yellow Section Services'}));  
-      google.maps.event.addListener(this.mapGenie.green_zone, 'click', (event) => this.presentModal({section_colour: 'green', message:'Green Section Services'}));
+      google.maps.event.addListener(this.mapGenie.red_zone, 'click',  (event) =>  this.presentModal({section_colour: 'danger', message:'Red Section Services'}) );  
+      google.maps.event.addListener(this.mapGenie.yellow_zone, 'click',  (event) =>   this.presentModal({section_colour: 'amber', message:'Yellow Section Services'}));  
+      google.maps.event.addListener(this.mapGenie.green_zone, 'click', (event) => this.presentModal({section_colour: 'secondary', message:'Green Section Services'}));
      }
   
 
@@ -145,6 +145,8 @@ export class HomePage {
 
   presentModal(data){  this.modal.create('ServicesPage', data).present();  }
 
-  list(key) { this.mapGenie.listPlaces(this.map,key); }
+  list(key: string, fab: FabContainer) {  fab.close(); this.mapGenie.listPlaces(this.map, key); }
+
+  clear(){ this.mapGenie.clearMarkers(); }
 
 }

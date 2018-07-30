@@ -103,7 +103,6 @@ export class MapGenieProvider {
     this.green_zone.setMap(map);
   }
 
-  presentToast(msg:string){ this.toast.create({  message: msg,  duration: 3000,  position: 'top'  });  }
 
   SectionContent(content,map) {
     this.infowindow.setContent(content);
@@ -112,7 +111,7 @@ export class MapGenieProvider {
   }
 
   listPlaces(map,key:string){
-  
+  this.presentMessage(`Searching for ${key} in nearby!!`);
     this.places = [];
     let service = new google.maps.places.PlacesService(map);
     service.textSearch({
@@ -128,21 +127,16 @@ export class MapGenieProvider {
       }
     });
   console.log(key);
-  }
+  } 
 
-  clearMarkers(){  this.listPlaces(null,'');}
+  presentMessage(msg:string){  this.toast.create({  message: msg, position: 'top',  duration: 2000,  showCloseButton: true,  closeButtonText: 'Got it!',  }).present();  }
 
-  deleteMarkers() {  this.clearMarkers();  this.places = [];  }
+  clearMarkers() {  for (var i = 0; i < this.places.length; i++ ) { this.places[i].setMap(null);  }  this.places.length = 0;  }
 
   createMarker(map,place) {
-   var placeLoc = place.geometry.location;
-    var marker = new google.maps.Marker({
-      map: map,
-      position: placeLoc,
-      animation: google.maps.Animation.BOUNCE,
-    });
-    google.maps.event.addListener(marker, 'click', (event)=> {  this.infowindow.setContent(place.name)  });
-  
+    var placeLoc = place.geometry.location;
+    var marker = new google.maps.Marker({  map: map,  position: placeLoc,  animation: google.maps.Animation.BOUNCE });
+    google.maps.event.addListener(marker, 'click', (event) => {  this.infowindow.setContent(place.name); console.log(event)  });
   }
 
 }

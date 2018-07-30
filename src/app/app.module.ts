@@ -8,6 +8,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { MapGenieProvider } from '../providers/map-genie/map-genie';
 
+
 @NgModule({
   declarations: [
     MyApp,

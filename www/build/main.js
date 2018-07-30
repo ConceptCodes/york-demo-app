@@ -74,9 +74,9 @@ var HomePage = /** @class */ (function () {
         var _this = this;
         this.initMap();
         this.mapGenie.AddSections(this.map);
-        google.maps.event.addListener(this.mapGenie.red_zone, 'click', function (event) { return _this.presentModal({ section_colour: 'red', message: 'Red Section Services' }); });
-        google.maps.event.addListener(this.mapGenie.yellow_zone, 'click', function (event) { return _this.presentModal({ section_colour: 'yellow', message: 'Yellow Section Services' }); });
-        google.maps.event.addListener(this.mapGenie.green_zone, 'click', function (event) { return _this.presentModal({ section_colour: 'green', message: 'Green Section Services' }); });
+        google.maps.event.addListener(this.mapGenie.red_zone, 'click', function (event) { return _this.presentModal({ section_colour: 'danger', message: 'Red Section Services' }); });
+        google.maps.event.addListener(this.mapGenie.yellow_zone, 'click', function (event) { return _this.presentModal({ section_colour: 'amber', message: 'Yellow Section Services' }); });
+        google.maps.event.addListener(this.mapGenie.green_zone, 'click', function (event) { return _this.presentModal({ section_colour: 'secondary', message: 'Green Section Services' }); });
     };
     HomePage.prototype.initMap = function () {
         var styledMapType = new google.maps.StyledMapType([
@@ -194,14 +194,15 @@ var HomePage = /** @class */ (function () {
         this.map.setMapTypeId('styled_map');
     };
     HomePage.prototype.presentModal = function (data) { this.modal.create('ServicesPage', data).present(); };
-    HomePage.prototype.list = function (key) { this.mapGenie.listPlaces(this.map, key); };
+    HomePage.prototype.list = function (key, fab) { fab.close(); this.mapGenie.listPlaces(this.map, key); };
+    HomePage.prototype.clear = function () { this.mapGenie.clearMarkers(); };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('map'),
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
     ], HomePage.prototype, "mapElement", void 0);
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"C:\Users\David Ojo\Desktop\Media\Enterprise Projects\york-app\src\pages\home\home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      York App Demo\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n  <ion-content>\n    <div id="floating-panel">\n          <ion-row>\n            <ion-col>\n                <button ion-fab (click)="list(\'restaurants\')" color=danger icon-only><ion-icon name="restaurant"></ion-icon></button>\n            </ion-col>\n            <ion-col>\n                <button ion-fab (click)="list(\'stores\')" color=dark icon-only><ion-icon name="ios-basket"></ion-icon></button>\n            </ion-col>\n            <ion-col>\n                <button ion-fab (click)="list(\'bars\')" icon-only><ion-icon color=light name="beer"></ion-icon></button>\n            </ion-col>\n          </ion-row>\n      </div>\n      <div #map id="map"></div>\n  </ion-content>\n\n'/*ion-inline-end:"C:\Users\David Ojo\Desktop\Media\Enterprise Projects\york-app\src\pages\home\home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"C:\Users\David Ojo\Desktop\Media\Enterprise Projects\york-app\app\src\pages\home\home.html"*/'  <ion-content>\n  <!--  <div id="floating-panel">\n        <ion-fab bottom right #fab>\n            <button icon-only ion-fab><ion-icon name="grid"></ion-icon></button>\n            <ion-fab-list side="left">\n                <button ion-fab (click)="list(\'restaurants\', fab)" color=danger icon-only><ion-icon name="restaurant"></ion-icon></button>\n                <button ion-fab (click)="list(\'stores\', fab)" color=dark icon-only><ion-icon name="ios-basket"></ion-icon></button>\n                <button ion-fab (click)="list(\'bars\', fab)" icon-only><ion-icon color=light name="beer"></ion-icon></button>\n            </ion-fab-list>\n            <ion-fab-list side="bottom">\n              <button ion-fab (click)="close()" color=light><ion-icon name="trash"></ion-icon></button>\n            </ion-fab-list>\n          </ion-fab>\n      </div> -->\n      <div #map id="map"></div>\n  </ion-content>\n\n'/*ion-inline-end:"C:\Users\David Ojo\Desktop\Media\Enterprise Projects\york-app\app\src\pages\home\home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ToastController */], __WEBPACK_IMPORTED_MODULE_2__providers_map_genie_map_genie__["a" /* MapGenieProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]])
     ], HomePage);
@@ -316,7 +317,6 @@ var MapGenieProvider = /** @class */ (function () {
         this.yellow_zone.setMap(map);
         this.green_zone.setMap(map);
     };
-    MapGenieProvider.prototype.presentToast = function (msg) { this.toast.create({ message: msg, duration: 3000, position: 'top' }); };
     MapGenieProvider.prototype.SectionContent = function (content, map) {
         this.infowindow.setContent(content);
         // this.infowindow.setPosition(loc);
@@ -324,6 +324,7 @@ var MapGenieProvider = /** @class */ (function () {
     };
     MapGenieProvider.prototype.listPlaces = function (map, key) {
         var _this = this;
+        this.presentMessage("Searching for " + key + " in nearby!!");
         this.places = [];
         var service = new google.maps.places.PlacesService(map);
         service.textSearch({
@@ -340,17 +341,15 @@ var MapGenieProvider = /** @class */ (function () {
         });
         console.log(key);
     };
-    MapGenieProvider.prototype.clearMarkers = function () { this.listPlaces(null, ''); };
-    MapGenieProvider.prototype.deleteMarkers = function () { this.clearMarkers(); this.places = []; };
+    MapGenieProvider.prototype.presentMessage = function (msg) { this.toast.create({ message: msg, position: 'top', duration: 2000, showCloseButton: true, closeButtonText: 'Got it!', }).present(); };
+    MapGenieProvider.prototype.clearMarkers = function () { for (var i = 0; i < this.places.length; i++) {
+        this.places[i].setMap(null);
+    } this.places.length = 0; };
     MapGenieProvider.prototype.createMarker = function (map, place) {
         var _this = this;
         var placeLoc = place.geometry.location;
-        var marker = new google.maps.Marker({
-            map: map,
-            position: placeLoc,
-            animation: google.maps.Animation.BOUNCE,
-        });
-        google.maps.event.addListener(marker, 'click', function (event) { _this.infowindow.setContent(place.name); });
+        var marker = new google.maps.Marker({ map: map, position: placeLoc, animation: google.maps.Animation.BOUNCE });
+        google.maps.event.addListener(marker, 'click', function (event) { _this.infowindow.setContent(place.name); console.log(event); });
     };
     MapGenieProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
@@ -476,7 +475,7 @@ var MyApp = /** @class */ (function () {
         });
     }
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\David Ojo\Desktop\Media\Enterprise Projects\york-app\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"C:\Users\David Ojo\Desktop\Media\Enterprise Projects\york-app\src\app\app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\David Ojo\Desktop\Media\Enterprise Projects\york-app\app\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"C:\Users\David Ojo\Desktop\Media\Enterprise Projects\york-app\app\src\app\app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);

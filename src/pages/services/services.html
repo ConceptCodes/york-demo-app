@@ -1,11 +1,21 @@
 <ion-header>
-  <ion-navbar color="section_colour">
+  <ion-navbar [color]="section_colour">
     <ion-title>Services</ion-title>
-    
+    <ion-buttons end> 
+      <button ion-button clear icon-only (click)="close()"> <ion-icon  name="close"></ion-icon></button> 
+    </ion-buttons>
   </ion-navbar>
-</ion-header>
+</ion-header> 
 
 <ion-content padding>
-  <p>{{ section_colour }}</p>
-  <p>{{ message }}</p>
+  <ion-list>
+    <ion-item *ngFor="let person of data">
+        <ion-thumbnail item-start>
+            <img src="http://www.crawfordsworld.com/rob/economics/Apprentice6/AP6images/tim1.jpg">
+          </ion-thumbnail>
+          <h2>{{person.first}} {{person.last}}</h2>
+          <h3>{{person.address}}</h3>
+          <p>{{person.created}}</p>
+        </ion-item>
+  </ion-list>
 </ion-content>

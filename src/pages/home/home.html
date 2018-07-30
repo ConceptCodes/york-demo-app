@@ -1,25 +1,17 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      York App Demo
-    </ion-title>
-  </ion-navbar>
-</ion-header>
-
   <ion-content>
-    <div id="floating-panel">
-          <ion-row>
-            <ion-col>
-                <button ion-fab (click)="list('restaurants')" color=danger icon-only><ion-icon name="restaurant"></ion-icon></button>
-            </ion-col>
-            <ion-col>
-                <button ion-fab (click)="list('stores')" color=dark icon-only><ion-icon name="ios-basket"></ion-icon></button>
-            </ion-col>
-            <ion-col>
-                <button ion-fab (click)="list('bars')" icon-only><ion-icon color=light name="beer"></ion-icon></button>
-            </ion-col>
-          </ion-row>
-      </div>
+  <!--  <div id="floating-panel">
+        <ion-fab bottom right #fab>
+            <button icon-only ion-fab><ion-icon name="grid"></ion-icon></button>
+            <ion-fab-list side="left">
+                <button ion-fab (click)="list('restaurants', fab)" color=danger icon-only><ion-icon name="restaurant"></ion-icon></button>
+                <button ion-fab (click)="list('stores', fab)" color=dark icon-only><ion-icon name="ios-basket"></ion-icon></button>
+                <button ion-fab (click)="list('bars', fab)" icon-only><ion-icon color=light name="beer"></ion-icon></button>
+            </ion-fab-list>
+            <ion-fab-list side="bottom">
+              <button ion-fab (click)="close()" color=light><ion-icon name="trash"></ion-icon></button>
+            </ion-fab-list>
+          </ion-fab>
+      </div> -->
       <div #map id="map"></div>
   </ion-content>
 
