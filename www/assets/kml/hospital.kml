@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><kml xmlns="http://earth.google.com/kml/2.0">
+<Placemark>
+  <description>
+	    <![CDATA[This was found by lat/long data stored in your database.]]>
+    </description>
+	<name>Hanover Hospital, Hanover, York, PA, USA</name>
+  <LookAt>
+    <longitude>-76.982814800</longitude>
+    <latitude>39.808671600</latitude>
+    <range>67658.9586123</range>
+    <tilt>45</tilt>
+    <heading>0</heading>
+  </LookAt>
+  <visibility>1</visibility>
+<Point><coordinates>-76.982814800,39.808671600</coordinates></Point></Placemark></kml>

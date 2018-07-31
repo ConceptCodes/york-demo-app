@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+<name>Wyndham Garden York PA Hotel</name>
+<atom:link rel="related" href="http://www.wgyorkpa.com" />
+<Folder>
+<Placemark>
+<name><![CDATA[Wyndham Garden York PA Hotel]]></name>
+<address><![CDATA[2000 Loucks Road, York, PA, 17408]]></address>
+<Point>
+<coordinates>-76.7774934,39.9702262,0</coordinates>
+</Point>
+</Placemark>
+</Folder>
+</Document>
+</kml>

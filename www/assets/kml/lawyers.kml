@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document>
+<Placemark>
+<name>Malone &amp; Neubaum</name>
+<address>42 South Duke Street, York, PA, 17401</address>
+<phoneNumber>717-843-8001</phoneNumber>
+<phoneNumber></phoneNumber>
+<description>
+<![CDATA[
+<h1>York, PA, Family Law Attorney</h1>
+<p><a href="http://www.maloneneubaum.com/"><img src="http://wldimages.findlaw.com/images/1158230/1158230_1.jpg" alt="Family Law Attorney" align="left"></a>Since 1982, Malone & Neubaum has been providing superior legal representation to clients throughout Pennsylvania. Our clients' legal issues include family law, estate planning, civil litigation, real estate and land use, and municipal law.
+<br><br>
+<b><font color="red">Call us today at 717-843-8001
+</font><br><br><a href="http://www.maloneneubaum.com/">Visit Our Website</a><br> <a href="https://plus.google.com/108597070968463225348/about">Visit Our Google&#43; Local Page</a></b></p>]]>
+</description>
+<Point>
+<coordinates>-76.725447,39.961919</coordinates>
+</Point>
+</Placemark>
+</Document>
+</kml>

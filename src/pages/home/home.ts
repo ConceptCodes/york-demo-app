@@ -13,7 +13,49 @@ export class HomePage {
   map: any;
   latLng: any;
   data: any;
-  constructor(public modal: ModalController, public toast: ToastController, public mapGenie: MapGenieProvider, public navCtrl: NavController) { this.latLng = { lat: 39.9666628 , lng: -76.749997}; }
+  people: any;
+  constructor(public modal: ModalController, public toast: ToastController, public mapGenie: MapGenieProvider, public navCtrl: NavController) { this.latLng = { lat: 39.9666628 , lng: -76.749997}; 
+  this.people =  [{
+    first: "Lia",
+    last: "Block",
+    email: "Lia.Block@chadrick.org",
+    address: "00286 Tristian Parkways",
+    created: "April 11, 2009",
+    balance: "$7,285.26"
+  },
+  {
+    first: "Toney",
+    last: "Swift",
+    email: "Toney.Swift@zander.name",
+    address: "7800 Orlando Shoal",
+    created: "October 9, 2008",
+    balance: "$5,759.81"
+  },
+  {
+    first: "Fiona",
+    last: "Streich",
+    email: "azurerabbit88@gmail.com",
+    address: "7367 Rutherford Tunnel",
+    created: "June 10, 2010",
+    balance: "$1,401.72"
+  },
+  {
+    first: "Abigayle",
+    last: "Dicki",
+    email: "greywolf94@gmail.com",
+    address: "01450 Loyal Ridge",
+    created: "July 13, 2010",
+    balance: "$1,043.64"
+  },
+  {
+    first: "Nina",
+    last: "Marvin",
+    email: "Nina.Marvin@vinnie.net",
+    address: "5322 Huel Plain",
+    created: "September 14, 2016",
+    balance: "$9,582.92"
+  }];
+}
     
     ionViewWillLoad(){ 
       this.initMap();  

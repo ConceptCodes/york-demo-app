@@ -1,17 +1,32 @@
   <ion-content>
-  <!--  <div id="floating-panel">
-        <ion-fab bottom right #fab>
-            <button icon-only ion-fab><ion-icon name="grid"></ion-icon></button>
-            <ion-fab-list side="left">
-                <button ion-fab (click)="list('restaurants', fab)" color=danger icon-only><ion-icon name="restaurant"></ion-icon></button>
-                <button ion-fab (click)="list('stores', fab)" color=dark icon-only><ion-icon name="ios-basket"></ion-icon></button>
-                <button ion-fab (click)="list('bars', fab)" icon-only><ion-icon color=light name="beer"></ion-icon></button>
-            </ion-fab-list>
-            <ion-fab-list side="bottom">
-              <button ion-fab (click)="close()" color=light><ion-icon name="trash"></ion-icon></button>
-            </ion-fab-list>
-          </ion-fab>
-      </div> -->
+      <div class=search>
+            <ion-searchbar
+            spellcheck=true
+            animated=true
+            [(ngModel)]=myInput
+            showCancelButton=true>
+          </ion-searchbar>
+      </div>
+   <div id="floating-panel" color=primary>
+    <ion-card>
+        <ion-card-header>
+           <p style="font-size: 30px; color: white; text-shadow: 2px 2px black;"> Menu </p>
+        </ion-card-header>
+        <ion-card-content>
+            <br>
+            <ion-list>
+                <ion-item *ngFor="let person of people">
+                        <ion-thumbnail item-start>
+                                <img src="https://specials-images.forbesimg.com/imageserve/5a8d90fd4bbe6f2652f61c15/416x416.jpg?background=000000&cropX1=0&cropX2=1999&cropY1=159&cropY2=2159">
+                              </ion-thumbnail>
+                              <h2>{{person.first}} {{person.last}}</h2>
+                              <h3>{{person.address}}</h3>
+                              <p>{{person.created}}</p>
+                </ion-item>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
+   </div> 
       <div #map id="map"></div>
   </ion-content>
 

@@ -8,7 +8,14 @@
           text-align: center;
           line-height: 30px;
           padding-left: 10px;
+          float: left;
         }
+
         #map {  height: 100%;  }
+
+        .search { padding-left: 5%; top: 50px; position: absolute; z-index: 5; width: 65%; float: left; margin-right: 40px; }
+
+        ion-card-header { background-color: rgb(50, 109, 3);  }
+
       }
 

@@ -69,6 +69,46 @@ var HomePage = /** @class */ (function () {
         this.mapGenie = mapGenie;
         this.navCtrl = navCtrl;
         this.latLng = { lat: 39.9666628, lng: -76.749997 };
+        this.people = [{
+                first: "Lia",
+                last: "Block",
+                email: "Lia.Block@chadrick.org",
+                address: "00286 Tristian Parkways",
+                created: "April 11, 2009",
+                balance: "$7,285.26"
+            },
+            {
+                first: "Toney",
+                last: "Swift",
+                email: "Toney.Swift@zander.name",
+                address: "7800 Orlando Shoal",
+                created: "October 9, 2008",
+                balance: "$5,759.81"
+            },
+            {
+                first: "Fiona",
+                last: "Streich",
+                email: "azurerabbit88@gmail.com",
+                address: "7367 Rutherford Tunnel",
+                created: "June 10, 2010",
+                balance: "$1,401.72"
+            },
+            {
+                first: "Abigayle",
+                last: "Dicki",
+                email: "greywolf94@gmail.com",
+                address: "01450 Loyal Ridge",
+                created: "July 13, 2010",
+                balance: "$1,043.64"
+            },
+            {
+                first: "Nina",
+                last: "Marvin",
+                email: "Nina.Marvin@vinnie.net",
+                address: "5322 Huel Plain",
+                created: "September 14, 2016",
+                balance: "$9,582.92"
+            }];
     }
     HomePage.prototype.ionViewWillLoad = function () {
         var _this = this;
@@ -202,7 +242,7 @@ var HomePage = /** @class */ (function () {
     ], HomePage.prototype, "mapElement", void 0);
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"C:\Users\David Ojo\Desktop\Media\Enterprise Projects\york-app\app\src\pages\home\home.html"*/'  <ion-content>\n  <!--  <div id="floating-panel">\n        <ion-fab bottom right #fab>\n            <button icon-only ion-fab><ion-icon name="grid"></ion-icon></button>\n            <ion-fab-list side="left">\n                <button ion-fab (click)="list(\'restaurants\', fab)" color=danger icon-only><ion-icon name="restaurant"></ion-icon></button>\n                <button ion-fab (click)="list(\'stores\', fab)" color=dark icon-only><ion-icon name="ios-basket"></ion-icon></button>\n                <button ion-fab (click)="list(\'bars\', fab)" icon-only><ion-icon color=light name="beer"></ion-icon></button>\n            </ion-fab-list>\n            <ion-fab-list side="bottom">\n              <button ion-fab (click)="close()" color=light><ion-icon name="trash"></ion-icon></button>\n            </ion-fab-list>\n          </ion-fab>\n      </div> -->\n      <div #map id="map"></div>\n  </ion-content>\n\n'/*ion-inline-end:"C:\Users\David Ojo\Desktop\Media\Enterprise Projects\york-app\app\src\pages\home\home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"C:\Users\David Ojo\Desktop\Media\Enterprise Projects\york-app\app\src\pages\home\home.html"*/'  <ion-content>\n      <div class=search>\n            <ion-searchbar\n            spellcheck=true\n            animated=true\n            [(ngModel)]=myInput\n            showCancelButton=true>\n          </ion-searchbar>\n      </div>\n   <div id="floating-panel" color=primary>\n    <ion-card>\n        <ion-card-header>\n           <p style="font-size: 30px; color: white; text-shadow: 2px 2px black;"> Menu </p>\n        </ion-card-header>\n        <ion-card-content>\n            <br>\n            <ion-list>\n                <ion-item *ngFor="let person of people">\n                        <ion-thumbnail item-start>\n                                <img src="https://specials-images.forbesimg.com/imageserve/5a8d90fd4bbe6f2652f61c15/416x416.jpg?background=000000&cropX1=0&cropX2=1999&cropY1=159&cropY2=2159">\n                              </ion-thumbnail>\n                              <h2>{{person.first}} {{person.last}}</h2>\n                              <h3>{{person.address}}</h3>\n                              <p>{{person.created}}</p>\n                </ion-item>\n            </ion-list>\n        </ion-card-content>\n    </ion-card>\n   </div> \n      <div #map id="map"></div>\n  </ion-content>\n\n'/*ion-inline-end:"C:\Users\David Ojo\Desktop\Media\Enterprise Projects\york-app\app\src\pages\home\home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ToastController */], __WEBPACK_IMPORTED_MODULE_2__providers_map_genie_map_genie__["a" /* MapGenieProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]])
     ], HomePage);

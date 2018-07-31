@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><kml xmlns="http://earth.google.com/kml/2.0">
+<Placemark>
+  <description>
+	    <![CDATA[This was found by lat/long data stored in your database.]]>
+    </description>
+	<name>Christ Lutheran Church, York, PA</name>
+  <LookAt>
+    <longitude>-76.7267298</longitude>
+    <latitude>39.9618191</latitude>
+    <range>67658.95861226</range>
+    <tilt>45</tilt>
+    <heading>0</heading>
+  </LookAt>
+  <visibility>1</visibility>
+<Point><coordinates>-76.7267298,39.9618191</coordinates></Point></Placemark></kml>

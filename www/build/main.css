@@ -27981,8 +27981,23 @@ page-home #floating-panel {
   text-align: center;
   line-height: 30px;
   padding-left: 10px;
+  float: left;
 }
 
 page-home #map {
   height: 100%;
+}
+
+page-home .search {
+  padding-left: 5%;
+  top: 50px;
+  position: absolute;
+  z-index: 5;
+  width: 65%;
+  float: left;
+  margin-right: 40px;
+}
+
+page-home ion-card-header {
+  background-color: #326d03;
 }
