@@ -27989,13 +27989,9 @@ page-home #map {
 }
 
 page-home .search {
-  padding-left: 5%;
-  top: 50px;
+  padding: 5%;
   position: absolute;
   z-index: 5;
-  width: 65%;
-  float: left;
-  margin-right: 40px;
 }
 
 page-home ion-card-header {

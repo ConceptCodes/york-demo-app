@@ -37,16 +37,16 @@ export class MapGenieProvider {
      {lat: 39.96101403254857, lng: -76.73779153059098},
      {lat: 39.96637065347542, lng: -76.748241416913},
      {lat: 39.96459450309773, lng: -76.74950741956803},
-     {lat:39.9641833505999, lng: -76.74963616560075},
-     {lat:39.96372285686692, lng: -76.74978636930558},
+     {lat: 39.9641833505999, lng: -76.74963616560075},
+     {lat: 39.96372285686692, lng: -76.74978636930558},
      {lat: 39.963393930872975, lng: -76.75010823438737},
      {lat: 39.95954537917795, lng: -76.75362729261491},
-     {lat:39.958492746118, lng: -76.7509236259279},
-     {lat:39.957308514557155, lng: -76.75158881376359},
-     {lat:39.95694666193423, lng: -76.75064467619035},
-     {lat:39.955786303634746, lng: -76.74992841307778},
-     {lat:39.959709851629874, lng: -76.73710488508317},
-     {lat:39.95963247800763, lng: -76.73710488508317}
+     {lat: 39.958492746118, lng: -76.7509236259279},
+     {lat: 39.957308514557155, lng: -76.75158881376359},
+     {lat: 39.95694666193423, lng: -76.75064467619035},
+     {lat: 39.955786303634746, lng: -76.74992841307778},
+     {lat: 39.959709851629874, lng: -76.73710488508317},
+     {lat: 39.95963247800763, lng: -76.73710488508317}
     ];
 
     var green_zone_coords = [
@@ -88,7 +88,7 @@ export class MapGenieProvider {
     });
     
         this.green_zone = new google.maps.Polygon({
-          label: 'Section 1',
+          label: 'Section 3',
           clickable: true,
           paths: green_zone_coords,
           strokeColor: '#145A32',
@@ -106,34 +106,34 @@ export class MapGenieProvider {
 
   SectionContent(content,map) {
     this.infowindow.setContent(content);
-   // this.infowindow.setPosition(loc);
+   _//this.infowindow.setPosition(loc);
     this.infowindow.open(map);
   }
 
-  listPlaces(map,key:string){
-  this.presentMessage(`Searching for ${key} in nearby!!`);
-    this.places = [];
-    let service = new google.maps.places.PlacesService(map);
-    service.textSearch({
-        location: this.latLng,
-        radius: '500',
-        query: key
-    }, (results,status) => {
-      if (status === google.maps.places.PlacesServiceStatus.OK) {
-        for (var i = 0; i < results.length; i++) {
-          this.createMarker(map,results[i]);
-          this.places.push(results[i]);
-        }
-      }
-    });
-  console.log(key);
-  } 
+  listPlaces(map,key:string) {
+    this.presentMessage(`Searching for ${key} in nearby!!`);
+      this.places = [];
+      let service = new google.maps.places.PlacesService(map);
+        service.textSearch({
+          location: this.latLng,
+          radius: '500',
+          query: key
+        }, (results,status) => {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            for (var i = 0; i < results.length; i++) {
+              this.createMarker(map,results[i]);
+              this.places.push(results[i]);
+            }
+          }
+        });
+      console.log(key);
+    } 
 
   presentMessage(msg:string){  this.toast.create({  message: msg, position: 'top',  duration: 2000,  showCloseButton: true,  closeButtonText: 'Got it!',  }).present();  }
 
   clearMarkers() {  for (var i = 0; i < this.places.length; i++ ) { this.places[i].setMap(null);  }  this.places.length = 0;  }
 
-  createMarker(map,place) {
+  createMarker(map , place) {
     var placeLoc = place.geometry.location;
     var marker = new google.maps.Marker({  map: map,  position: placeLoc,  animation: google.maps.Animation.BOUNCE });
     google.maps.event.addListener(marker, 'click', (event) => {  this.infowindow.setContent(place.name); console.log(event)  });

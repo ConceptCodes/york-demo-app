@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 269:
+/***/ 272:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ServicesPageModule", function() { return ServicesPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services__ = __webpack_require__(270);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services__ = __webpack_require__(273);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ var ServicesPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 270:
+/***/ 273:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -64,7 +64,7 @@ var ServicesPage = /** @class */ (function () {
         this.data = [];
         this.data = [{
                 first: "Lia",
-                last: "Block",
+                surname: "Block",
                 email: "Lia.Block@chadrick.org",
                 address: "00286 Tristian Parkways",
                 created: "April 11, 2009",
@@ -72,7 +72,7 @@ var ServicesPage = /** @class */ (function () {
             },
             {
                 first: "Toney",
-                last: "Swift",
+                surname: "Swift",
                 email: "Toney.Swift@zander.name",
                 address: "7800 Orlando Shoal",
                 created: "October 9, 2008",
@@ -80,7 +80,7 @@ var ServicesPage = /** @class */ (function () {
             },
             {
                 first: "Fiona",
-                last: "Streich",
+                surname: "Streich",
                 email: "azurerabbit88@gmail.com",
                 address: "7367 Rutherford Tunnel",
                 created: "June 10, 2010",
@@ -88,7 +88,7 @@ var ServicesPage = /** @class */ (function () {
             },
             {
                 first: "Abigayle",
-                last: "Dicki",
+                surname: "Dicki",
                 email: "greywolf94@gmail.com",
                 address: "01450 Loyal Ridge",
                 created: "July 13, 2010",
@@ -96,7 +96,7 @@ var ServicesPage = /** @class */ (function () {
             },
             {
                 first: "Nina",
-                last: "Marvin",
+                surname: "Marvin",
                 email: "Nina.Marvin@vinnie.net",
                 address: "5322 Huel Plain",
                 created: "September 14, 2016",
@@ -104,7 +104,7 @@ var ServicesPage = /** @class */ (function () {
             },
             {
                 first: "Herta",
-                last: "Pollich",
+                surname: "Pollich",
                 email: "goldwolf12@gmail.com",
                 address: "119 Burnice Fall",
                 created: "October 3, 2015",
@@ -112,7 +112,7 @@ var ServicesPage = /** @class */ (function () {
             },
             {
                 first: "Antonio",
-                last: "Stracke",
+                surname: "Stracke",
                 email: "indigorabbit69@gmail.com",
                 address: "4807 Tyreek Villages",
                 created: "May 24, 2011",
@@ -120,7 +120,7 @@ var ServicesPage = /** @class */ (function () {
             },
             {
                 first: "Weldon",
-                last: "Nienow",
+                surname: "Nienow",
                 email: "tansquirrel32@gmail.com",
                 address: "3335 Muriel Corners",
                 created: "May 17, 2012",
@@ -128,7 +128,7 @@ var ServicesPage = /** @class */ (function () {
             },
             {
                 first: "Will",
-                last: "Bins",
+                surname: "Bins",
                 email: "Will.Bins@cierra.biz",
                 address: "52967 Koss Grove",
                 created: "August 28, 2009",
@@ -136,7 +136,7 @@ var ServicesPage = /** @class */ (function () {
             },
             {
                 first: "Shane",
-                last: "Corkery",
+                surname: "Corkery",
                 email: "Shane.Corkery@erika.biz",
                 address: "793 Hudson Estates",
                 created: "January 14, 2012",
@@ -144,7 +144,7 @@ var ServicesPage = /** @class */ (function () {
             },
             {
                 first: "Ansley",
-                last: "Herzog",
+                surname: "Herzog",
                 email: "Ansley.Herzog@lucius.net",
                 address: "5657 Willms Village",
                 created: "May 20, 2012",
@@ -152,7 +152,7 @@ var ServicesPage = /** @class */ (function () {
             },
             {
                 first: "Timmothy",
-                last: "Kub",
+                surname: "Kub",
                 email: "azurerabbit15@gmail.com",
                 address: "0128 Abshire Highway",
                 created: "May 11, 2017",
@@ -160,7 +160,7 @@ var ServicesPage = /** @class */ (function () {
             },
             {
                 first: "Maurice",
-                last: "Jenkins",
+                surname: "Jenkins",
                 email: "silversquirrel52@gmail.com",
                 address: "7464 Johan Spring",
                 created: "January 3, 2011",
@@ -168,7 +168,7 @@ var ServicesPage = /** @class */ (function () {
             },
             {
                 first: "Vance",
-                last: "Hills",
+                surname: "Hills",
                 email: "magentawolf69@gmail.com",
                 address: "5162 Tre Mission",
                 created: "October 5, 2015",
@@ -176,7 +176,7 @@ var ServicesPage = /** @class */ (function () {
             },
             {
                 first: "Bridie",
-                last: "Wolff",
+                surname: "Wolff",
                 email: "Bridie.Wolff@leatha.net",
                 address: "892 Jammie Wall",
                 created: "October 24, 2013",
@@ -190,7 +190,7 @@ var ServicesPage = /** @class */ (function () {
     ServicesPage.prototype.close = function () { this.view.dismiss(); };
     ServicesPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-services',template:/*ion-inline-start:"C:\Users\David Ojo\Desktop\Media\Enterprise Projects\york-app\app\src\pages\services\services.html"*/'<ion-header>\n  <ion-navbar [color]="section_colour">\n    <ion-title>Services</ion-title>\n    <ion-buttons end> \n      <button ion-button clear icon-only (click)="close()"> <ion-icon  name="close"></ion-icon></button> \n    </ion-buttons>\n  </ion-navbar>\n</ion-header> \n\n<ion-content padding>\n  <ion-list>\n    <ion-item *ngFor="let person of data">\n        <ion-thumbnail item-start>\n            <img src="http://www.crawfordsworld.com/rob/economics/Apprentice6/AP6images/tim1.jpg">\n          </ion-thumbnail>\n          <h2>{{person.first}} {{person.last}}</h2>\n          <h3>{{person.address}}</h3>\n          <p>{{person.created}}</p>\n        </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"C:\Users\David Ojo\Desktop\Media\Enterprise Projects\york-app\app\src\pages\services\services.html"*/,
+            selector: 'page-services',template:/*ion-inline-start:"C:\Users\David Ojo\Desktop\Media\Enterprise Projects\york-app\app\src\pages\services\services.html"*/'<ion-header>\n  <ion-navbar [color]="section_colour">\n    <ion-title>{{section_colour}} Services</ion-title>\n    <ion-buttons end> \n      <button ion-button clear icon-only (click)="close()"> <ion-icon  name="close"></ion-icon></button> \n    </ion-buttons>\n  </ion-navbar>\n</ion-header> \n\n<ion-content padding>\n  <ion-list>\n    <ion-item *ngFor="let person of data">\n        <ion-thumbnail item-start>\n            <img src="http://www.crawfordsworld.com/rob/economics/Apprentice6/AP6images/tim1.jpg">\n          </ion-thumbnail>\n          <h2>{{person.first}} {{person.surname}}</h2>\n          <h3>{{person.address}}</h3>\n          <p>{{person.created}}</p>\n        </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"C:\Users\David Ojo\Desktop\Media\Enterprise Projects\york-app\app\src\pages\services\services.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
     ], ServicesPage);

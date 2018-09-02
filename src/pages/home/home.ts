@@ -1,6 +1,8 @@
 import { Component,  ViewChild, ElementRef } from '@angular/core';
 import { NavController, ToastController, ModalController, FabContainer } from 'ionic-angular';
 import { MapGenieProvider } from '../../providers/map-genie/map-genie';
+import { ServicesProvider } from '../../providers/services/services';
+import { Service } from '../../models/service';
 
 declare var google;
 
@@ -14,51 +16,16 @@ export class HomePage {
   latLng: any;
   data: any;
   people: any;
-  constructor(public modal: ModalController, public toast: ToastController, public mapGenie: MapGenieProvider, public navCtrl: NavController) { this.latLng = { lat: 39.9666628 , lng: -76.749997}; 
-  this.people =  [{
-    first: "Lia",
-    last: "Block",
-    email: "Lia.Block@chadrick.org",
-    address: "00286 Tristian Parkways",
-    created: "April 11, 2009",
-    balance: "$7,285.26"
-  },
-  {
-    first: "Toney",
-    last: "Swift",
-    email: "Toney.Swift@zander.name",
-    address: "7800 Orlando Shoal",
-    created: "October 9, 2008",
-    balance: "$5,759.81"
-  },
-  {
-    first: "Fiona",
-    last: "Streich",
-    email: "azurerabbit88@gmail.com",
-    address: "7367 Rutherford Tunnel",
-    created: "June 10, 2010",
-    balance: "$1,401.72"
-  },
-  {
-    first: "Abigayle",
-    last: "Dicki",
-    email: "greywolf94@gmail.com",
-    address: "01450 Loyal Ridge",
-    created: "July 13, 2010",
-    balance: "$1,043.64"
-  },
-  {
-    first: "Nina",
-    last: "Marvin",
-    email: "Nina.Marvin@vinnie.net",
-    address: "5322 Huel Plain",
-    created: "September 14, 2016",
-    balance: "$9,582.92"
-  }];
-}
-    
-    ionViewWillLoad(){ 
+  services: Service[];
+  searchTerm: string = '';
+  constructor(public serviceCtrl: ServicesProvider, public modal: ModalController, public toast: ToastController, public mapGenie: MapGenieProvider, public navCtrl: NavController) { this.latLng = { lat: 39.9666628 , lng: -76.749997};}
+  ionViewWillLoad(){ 
+    this.serviceCtrl.getData().subscribe((data) => 
+      data.forEach(element => {
+        this.services.push(element);
+      }));
       this.initMap();  
+      console.log(this.services);
       this.mapGenie.AddSections(this.map); 
       google.maps.event.addListener(this.mapGenie.red_zone, 'click',  (event) =>  this.presentModal({section_colour: 'danger', message:'Red Section Services'}) );  
       google.maps.event.addListener(this.mapGenie.yellow_zone, 'click',  (event) =>   this.presentModal({section_colour: 'amber', message:'Yellow Section Services'}));  
@@ -180,15 +147,24 @@ export class HomePage {
       ],
       {name: 'Styled Map'});
 
-     this.map = new google.maps.Map(this.mapElement.nativeElement, {  center: this.latLng,  zoom: 15  });
+    this.map = new google.maps.Map(this.mapElement.nativeElement, {  center: this.latLng,  zoom: 15  });
     this.map.mapTypes.set('styled_map', styledMapType);
     this.map.setMapTypeId('styled_map');
+
+   // var services = ['assets/kml/auto.kml' , 'assets/kml/auto.kml' , 'assets/kml/bail_bonds.kml' , 'assets/kml/church.kml' , 'assets/kml/convience_stores.kml' , 'assets/kml/hospital.kml' , 'assets/kml/lawyers.kml' , 'assets/kml/wyndham.kml'];
+
   } 
 
   presentModal(data){  this.modal.create('ServicesPage', data).present();  }
 
   list(key: string, fab: FabContainer) {  fab.close(); this.mapGenie.listPlaces(this.map, key); }
 
-  clear(){ this.mapGenie.clearMarkers(); }
+ // clear(){ this.mapGenie.clearMarkers(); }
 
+ filterItems(searchTerm){
+  return this.services.filter(  (item) => {
+      return item.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
+  });    
+
+}
 }

@@ -13,7 +13,7 @@ export class ServicesPage {
   constructor(public view: ViewController, public navCtrl: NavController, public navParams: NavParams) {
   this.data =  [{
       first: "Lia",
-      last: "Block",
+      surname: "Block",
       email: "Lia.Block@chadrick.org",
       address: "00286 Tristian Parkways",
       created: "April 11, 2009",
@@ -21,7 +21,7 @@ export class ServicesPage {
     },
     {
       first: "Toney",
-      last: "Swift",
+      surname: "Swift",
       email: "Toney.Swift@zander.name",
       address: "7800 Orlando Shoal",
       created: "October 9, 2008",
@@ -29,7 +29,7 @@ export class ServicesPage {
     },
     {
       first: "Fiona",
-      last: "Streich",
+      surname: "Streich",
       email: "azurerabbit88@gmail.com",
       address: "7367 Rutherford Tunnel",
       created: "June 10, 2010",
@@ -37,7 +37,7 @@ export class ServicesPage {
     },
     {
       first: "Abigayle",
-      last: "Dicki",
+      surname: "Dicki",
       email: "greywolf94@gmail.com",
       address: "01450 Loyal Ridge",
       created: "July 13, 2010",
@@ -45,7 +45,7 @@ export class ServicesPage {
     },
     {
       first: "Nina",
-      last: "Marvin",
+      surname: "Marvin",
       email: "Nina.Marvin@vinnie.net",
       address: "5322 Huel Plain",
       created: "September 14, 2016",
@@ -53,7 +53,7 @@ export class ServicesPage {
     },
     {
       first: "Herta",
-      last: "Pollich",
+      surname: "Pollich",
       email: "goldwolf12@gmail.com",
       address: "119 Burnice Fall",
       created: "October 3, 2015",
@@ -61,7 +61,7 @@ export class ServicesPage {
     },
     {
       first: "Antonio",
-      last: "Stracke",
+      surname: "Stracke",
       email: "indigorabbit69@gmail.com",
       address: "4807 Tyreek Villages",
       created: "May 24, 2011",
@@ -69,7 +69,7 @@ export class ServicesPage {
     },
     {
       first: "Weldon",
-      last: "Nienow",
+      surname: "Nienow",
       email: "tansquirrel32@gmail.com",
       address: "3335 Muriel Corners",
       created: "May 17, 2012",
@@ -77,7 +77,7 @@ export class ServicesPage {
     },
     {
       first: "Will",
-      last: "Bins",
+      surname: "Bins",
       email: "Will.Bins@cierra.biz",
       address: "52967 Koss Grove",
       created: "August 28, 2009",
@@ -85,7 +85,7 @@ export class ServicesPage {
     },
     {
       first: "Shane",
-      last: "Corkery",
+      surname: "Corkery",
       email: "Shane.Corkery@erika.biz",
       address: "793 Hudson Estates",
       created: "January 14, 2012",
@@ -93,7 +93,7 @@ export class ServicesPage {
     },
     {
       first: "Ansley",
-      last: "Herzog",
+      surname: "Herzog",
       email: "Ansley.Herzog@lucius.net",
       address: "5657 Willms Village",
       created: "May 20, 2012",
@@ -101,7 +101,7 @@ export class ServicesPage {
     },
     {
       first: "Timmothy",
-      last: "Kub",
+      surname: "Kub",
       email: "azurerabbit15@gmail.com",
       address: "0128 Abshire Highway",
       created: "May 11, 2017",
@@ -109,7 +109,7 @@ export class ServicesPage {
     },
     {
       first: "Maurice",
-      last: "Jenkins",
+      surname: "Jenkins",
       email: "silversquirrel52@gmail.com",
       address: "7464 Johan Spring",
       created: "January 3, 2011",
@@ -117,7 +117,7 @@ export class ServicesPage {
     },
     {
       first: "Vance",
-      last: "Hills",
+      surname: "Hills",
       email: "magentawolf69@gmail.com",
       address: "5162 Tre Mission",
       created: "October 5, 2015",
@@ -125,7 +125,7 @@ export class ServicesPage {
     },
     {
       first: "Bridie",
-      last: "Wolff",
+      surname: "Wolff",
       email: "Bridie.Wolff@leatha.net",
       address: "892 Jammie Wall",
       created: "October 24, 2013",

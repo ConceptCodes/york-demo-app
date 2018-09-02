@@ -1,32 +1,12 @@
   <ion-content>
-      <div class=search>
-            <ion-searchbar
-            spellcheck=true
-            animated=true
-            [(ngModel)]=myInput
-            showCancelButton=true>
+            <ion-searchbar 
+                class=search
+                spellcheck=true
+                animated=true
+                [(ngModel)]=myInput
+                showCancelButton=true
+                [(ngModel)]=searchTerm>
           </ion-searchbar>
-      </div>
-   <div id="floating-panel" color=primary>
-    <ion-card>
-        <ion-card-header>
-           <p style="font-size: 30px; color: white; text-shadow: 2px 2px black;"> Menu </p>
-        </ion-card-header>
-        <ion-card-content>
-            <br>
-            <ion-list>
-                <ion-item *ngFor="let person of people">
-                        <ion-thumbnail item-start>
-                                <img src="https://specials-images.forbesimg.com/imageserve/5a8d90fd4bbe6f2652f61c15/416x416.jpg?background=000000&cropX1=0&cropX2=1999&cropY1=159&cropY2=2159">
-                              </ion-thumbnail>
-                              <h2>{{person.first}} {{person.last}}</h2>
-                              <h3>{{person.address}}</h3>
-                              <p>{{person.created}}</p>
-                </ion-item>
-            </ion-list>
-        </ion-card-content>
-    </ion-card>
-   </div> 
-      <div #map id="map"></div>
+    <div #map id="map"></div>
   </ion-content>
 

@@ -3,11 +3,11 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { MapGenieProvider } from '../providers/map-genie/map-genie';
-
+import { ServicesProvider } from '../providers/services/services';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,8 @@ import { MapGenieProvider } from '../providers/map-genie/map-genie';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    HttpModule,
+    IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -27,7 +28,8 @@ import { MapGenieProvider } from '../providers/map-genie/map-genie';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    MapGenieProvider
+    MapGenieProvider,
+    ServicesProvider
   ]
 })
 export class AppModule {}
