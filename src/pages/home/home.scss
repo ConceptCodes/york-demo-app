@@ -1,21 +1,17 @@
-    page-home {
-        #floating-panel {
-          position: absolute;
-          top: 50px;
-          right: 5px;
-          z-index: 5;
-          padding: 5px;
-          text-align: center;
-          line-height: 30px;
-          padding-left: 10px;
-          float: left;
-        }
+page-home {
+    #floating-panel {
+      position: absolute;
+      top: 50px;
+      right: 5px;
+      z-index: 5;
+      padding: 5px;
+      text-align: center;
+      line-height: 30px;
+      padding-left: 10px;
+      float: left;
+    }
 
-        #map {  height: 100%;  }
+    #map { top: 0; height: 100%; overflow: hidden;  }
 
-        .search { padding: 5%; position: absolute; z-index: 5;  }
-
-        ion-card-header { background-color: rgb(50, 109, 3);  }
-
-      }
+  }
 

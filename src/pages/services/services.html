@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-navbar [color]="section_colour">
-    <ion-title>{{section_colour}} Services</ion-title>
+  <ion-navbar [color]="colour">
+    <ion-title>{{zone_name}} Services</ion-title>
     <ion-buttons end> 
       <button ion-button clear icon-only (click)="close()"> <ion-icon  name="close"></ion-icon></button> 
     </ion-buttons>
@@ -9,13 +9,12 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item *ngFor="let person of data">
+    <ion-item *ngFor="let item of data" text-wrap>
         <ion-thumbnail item-start>
             <img src="http://www.crawfordsworld.com/rob/economics/Apprentice6/AP6images/tim1.jpg">
           </ion-thumbnail>
-          <h2>{{person.first}} {{person.surname}}</h2>
-          <h3>{{person.address}}</h3>
-          <p>{{person.created}}</p>
+          <h1>{{item.Name}}</h1>
+          <p>{{item.Desc}}</p>
         </ion-item>
   </ion-list>
 </ion-content>

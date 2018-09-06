@@ -1,6 +1,6 @@
 import { Component,  ViewChild, ElementRef } from '@angular/core';
 import { NavController, ToastController, ModalController, FabContainer } from 'ionic-angular';
-import { MapGenieProvider } from '../../providers/map-genie/map-genie';
+import { MapProvider } from '../../providers/map/map';
 import { ServicesProvider } from '../../providers/services/services';
 import { Service } from '../../models/service';
 
@@ -16,21 +16,19 @@ export class HomePage {
   latLng: any;
   data: any;
   people: any;
-  services: Service[];
+  services: Array<Service>;
   searchTerm: string = '';
-  constructor(public serviceCtrl: ServicesProvider, public modal: ModalController, public toast: ToastController, public mapGenie: MapGenieProvider, public navCtrl: NavController) { this.latLng = { lat: 39.9666628 , lng: -76.749997};}
+  constructor(public serviceCtrl: ServicesProvider, public modal: ModalController, public toast: ToastController, public mapCtrl: MapProvider, public navCtrl: NavController) { 
+    this.latLng = { lat: 39.9623206, lng : -76.7291338};
+  }
+
   ionViewWillLoad(){ 
-    this.serviceCtrl.getData().subscribe((data) => 
-      data.forEach(element => {
-        this.services.push(element);
-      }));
       this.initMap();  
-      console.log(this.services);
-      this.mapGenie.AddSections(this.map); 
-      google.maps.event.addListener(this.mapGenie.red_zone, 'click',  (event) =>  this.presentModal({section_colour: 'danger', message:'Red Section Services'}) );  
-      google.maps.event.addListener(this.mapGenie.yellow_zone, 'click',  (event) =>   this.presentModal({section_colour: 'amber', message:'Yellow Section Services'}));  
-      google.maps.event.addListener(this.mapGenie.green_zone, 'click', (event) => this.presentModal({section_colour: 'secondary', message:'Green Section Services'}));
-     }
+      this.mapCtrl.AddSections(this.map); 
+      google.maps.event.addListener(this.mapCtrl.red_zone, 'click',  (event) =>  this.presentModal({section_name: 'Zone 1', colour: 'danger'}) );  
+      google.maps.event.addListener(this.mapCtrl.yellow_zone, 'click',  (event) =>   this.presentModal({section_name: 'Zone 2', colour: 'amber'}));  
+      google.maps.event.addListener(this.mapCtrl.green_zone, 'click', (event) => this.presentModal({section_name: 'Zone 3', colour: 'secondary'}));
+   }
   
 
   initMap() {
@@ -150,21 +148,11 @@ export class HomePage {
     this.map = new google.maps.Map(this.mapElement.nativeElement, {  center: this.latLng,  zoom: 15  });
     this.map.mapTypes.set('styled_map', styledMapType);
     this.map.setMapTypeId('styled_map');
-
-   // var services = ['assets/kml/auto.kml' , 'assets/kml/auto.kml' , 'assets/kml/bail_bonds.kml' , 'assets/kml/church.kml' , 'assets/kml/convience_stores.kml' , 'assets/kml/hospital.kml' , 'assets/kml/lawyers.kml' , 'assets/kml/wyndham.kml'];
-
   } 
 
   presentModal(data){  this.modal.create('ServicesPage', data).present();  }
 
-  list(key: string, fab: FabContainer) {  fab.close(); this.mapGenie.listPlaces(this.map, key); }
-
- // clear(){ this.mapGenie.clearMarkers(); }
-
- filterItems(searchTerm){
-  return this.services.filter(  (item) => {
-      return item.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
-  });    
+  list(key: string, fab: FabContainer) {  fab.close(); this.mapCtrl.listPlaces(this.map, key); }
 
 }
-}
+
