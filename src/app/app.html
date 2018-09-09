@@ -10,14 +10,15 @@
           <ion-searchbar 
                   spellcheck=true
                   animated=true
-                  (ionInput)=query(searchTerm)
+                  (ionInput)=query()
                   showCancelButton=true
-                 [(ngModel)]=searchTerm>
-              </ion-searchbar>
+                  [(ngModel)]=searchTerm>
+          </ion-searchbar>
       </ion-item>
       <ion-list>
         <ion-item *ngFor="let item of services">
-          <h2>{{ item.Name }}</h2>
+          <h1>{{ item.Name }}</h1>
+          <h2 *ngIf="item.Telephone != ''"><b>Tel: {{item.Telephone}}</b></h2>
           <p>{{ item.Desc }}</p>
         </ion-item>
       </ion-list> 

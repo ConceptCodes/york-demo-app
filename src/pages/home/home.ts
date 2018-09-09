@@ -1,8 +1,7 @@
 import { Component,  ViewChild, ElementRef } from '@angular/core';
-import { NavController, ToastController, ModalController, FabContainer } from 'ionic-angular';
+import { NavController, ToastController, ModalController } from 'ionic-angular';
 import { MapProvider } from '../../providers/map/map';
-import { ServicesProvider } from '../../providers/services/services';
-import { Service } from '../../models/service';
+import { ServicesPage } from '../services/services';
 
 declare var google;
 
@@ -15,19 +14,17 @@ export class HomePage {
   map: any;
   latLng: any;
   data: any;
-  people: any;
-  services: Array<Service>;
-  searchTerm: string = '';
-  constructor(public serviceCtrl: ServicesProvider, public modal: ModalController, public toast: ToastController, public mapCtrl: MapProvider, public navCtrl: NavController) { 
+
+  constructor(public modal: ModalController, public toast: ToastController, public mapCtrl: MapProvider, public navCtrl: NavController) { 
     this.latLng = { lat: 39.9623206, lng : -76.7291338};
   }
 
   ionViewWillLoad(){ 
       this.initMap();  
       this.mapCtrl.AddSections(this.map); 
-      google.maps.event.addListener(this.mapCtrl.red_zone, 'click',  (event) =>  this.presentModal({section_name: 'Zone 1', colour: 'danger'}) );  
-      google.maps.event.addListener(this.mapCtrl.yellow_zone, 'click',  (event) =>   this.presentModal({section_name: 'Zone 2', colour: 'amber'}));  
-      google.maps.event.addListener(this.mapCtrl.green_zone, 'click', (event) => this.presentModal({section_name: 'Zone 3', colour: 'secondary'}));
+      google.maps.event.addListener(this.mapCtrl.red_zone, 'click',  (event) =>  this.presentModal({section_name: 'Zone 1', colour: 'danger'}));  
+  google.maps.event.addListener(this.mapCtrl.yellow_zone, 'click',  (event) => this.presentModal({section_name: 'Zone 2', colour: 'amber'}));  
+google.maps.event.addListener(this.mapCtrl.green_zone, 'click', (event) => this.presentModal({section_name: 'Zone 3', colour: 'secondary'}));
    }
   
 
@@ -150,9 +147,8 @@ export class HomePage {
     this.map.setMapTypeId('styled_map');
   } 
 
-  presentModal(data){  this.modal.create('ServicesPage', data).present();  }
-
-  list(key: string, fab: FabContainer) {  fab.close(); this.mapCtrl.listPlaces(this.map, key); }
+  
+  presentModal(data){ this.modal.create(ServicesPage, data).present();  }
 
 }
 

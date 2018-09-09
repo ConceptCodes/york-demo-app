@@ -18,20 +18,24 @@ export class MyApp {
   searchTerm: string = '';
   constructor(public serviceCtrl: ServicesProvider, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
-    this.services = this.serviceCtrl.services;
+    this.loadServices();
   }
 
-  query(val: string){
-      return this.services.filter((item) => {
-        return item.Name.toLowerCase().indexOf(val.toLowerCase()) > -1;
-    }); 
+  loadServices(){ return this.services = this.serviceCtrl.services; }
+
+  query() {
+    this.loadServices();
+    this.services =  this.services.filter((item) => {
+      return item.Name.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1;
+    });
+
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      this.statusBar.styleDefault();
+      this.statusBar.styleDefault(); 
       this.splashScreen.hide();
     });
   }

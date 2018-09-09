@@ -4,10 +4,12 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+import { ServicesPage } from '../pages/services/services';
+import { DetailPage } from '../pages/detail/detail';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+
 import { MapProvider } from '../providers/map/map';
 import { ServicesProvider } from '../providers/services/services';
 
@@ -15,7 +17,8 @@ import { ServicesProvider } from '../providers/services/services';
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    ServicesPage,
+    DetailPage
   ],
   imports: [
     BrowserModule,
@@ -25,7 +28,8 @@ import { ServicesProvider } from '../providers/services/services';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    ServicesPage,
+    DetailPage
   ],
   providers: [
     StatusBar,
