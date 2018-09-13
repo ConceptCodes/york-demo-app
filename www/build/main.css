@@ -16030,7 +16030,7 @@ ion-menu.show-menu {
   transform: translate3d(-9999px,  0,  0);
   position: absolute;
   display: block;
-  width: 500px !important;
+  width: 350px !important;
   height: 100%;
   contain: strict;
 }
@@ -16081,7 +16081,7 @@ ion-menu ion-backdrop {
 
 @media (max-width: 340px) {
   .menu-inner {
-    width: 500px !important-40px;
+    width: 350px !important-40px;
   }
 }
 
@@ -27972,8 +27972,8 @@ ion-navbar.toolbar {
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
 
-.search {
-  background-color: burlywood;
+.results {
+  text-align: center;
 }
 
 page-home #floating-panel {

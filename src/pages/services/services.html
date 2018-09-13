@@ -11,10 +11,19 @@
   <ion-list>
     <ion-item *ngFor="let item of data" text-wrap>
           <h1>{{item.Name}}</h1>
+          <br>
+          <ion-row>
+            <ion-col *ngIf="item.Telephone != 0">
+              <h2><b>Tel: </b>{{item.Telephone}}</h2>
+            </ion-col>
+            <ion-col *ngIf="item.Address != 0">
+              <h2><b>Address: </b>{{item.Address}}</h2>
+            </ion-col>
+          </ion-row>
           <p>{{item.Desc}}</p>
-          <button ion-button icon-only item-end clear (click)="showDetail(item)">
+        <!--  <button ion-button icon-only item-end clear (click)="showDetail(item)">
             <ion-icon name="expand" [color]="colour"></ion-icon>
-          </button>
+          </button> -->
         </ion-item>
   </ion-list>
 </ion-content>

@@ -19,7 +19,7 @@ export class ServicesProvider {
             Desc: "211 Maryland is a critical UWCM service that skillfully and compassionay links people in need with community resources  It provides statewide 24hour information and referral to a wide variety of health and human services  Services are primarily provided"
             },{
             Name: "4th Congressional District Internship Association",
-            Address: "7177930983",
+            Address: "",
             Telephone: "7177930983",
             Desc: "12 week congressional internship during summer  6 weeks in DC office 6 weeks in a district office housing at a DC University provided while serving in Washington no housing provided during district portion weekly stipend for meals and transportation"
             },{
