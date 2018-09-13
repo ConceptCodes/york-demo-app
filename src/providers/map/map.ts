@@ -13,7 +13,11 @@ export class MapProvider {
   red_zone: any;
   yellow_zone: any;
   green_zone: any;
-  constructor(public toast: ToastController) { this.latLng = { lat: 39.9666628 , lng: -76.749997};  this.infowindow = new google.maps.InfoWindow; }
+  geocoder: any;
+  marker: any;
+  constructor(public toast: ToastController) { this.latLng = { lat: 39.9666628 , lng: -76.749997};  this.infowindow = new google.maps.InfoWindow;  
+    this.geocoder = new google.maps.Geocoder;    
+}
 
   AddSections(map){
     var red_zone_coords = [
@@ -103,13 +107,7 @@ export class MapProvider {
     this.green_zone.setMap(map);
   }
 
-
- // SectionContent(content,map) {
-  //  this.infowindow.setContent(content);
-   //this.infowindow.setPosition(loc);
-  //  this.infowindow.open(map);
-//  }
-
+/*
   listPlaces(map,key:string) {
     this.presentMessage(`Searching for ${key} in nearby!!`);
       this.places = [];
@@ -128,15 +126,28 @@ export class MapProvider {
         });
       console.log(key);
     } 
+*/
+   addressToCoords(item,map) {
+      this.geocoder.geocode( { 'address': item.Address}, function(results, status) {
+        if (status == 'OK') {
+          map.setCenter(results[0].geometry.location);
+          this.marker = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location
+          });
+        console.log(this.marker);
+        } else {
+          console.log(`Geocode was not successful for the following reason: ${status}`);
+        }
+      });
+      /*const content = `<p><b>${item.Name}</b></p>
+                       <p><b>Tel: </b>${item.Telephone}</p>
+                       <p><b>Address: </b>${item.Address}</p>`
 
-  presentMessage(msg:string){  this.toast.create({  message: msg, position: 'top',  duration: 2000,  showCloseButton: true,  closeButtonText: 'Got it!',  }).present();  }
+      var infowindow = new google.maps.InfoWindow({ content: content });
+      google.maps.event.addListener(this.marker, 'click', (event)=> {  infowindow.open(map, this.marker);  });
+    */}
 
-  clearMarkers() {  for (var i = 0; i < this.places.length; i++ ) { this.places[i].setMap(null);  }  this.places.length = 0;  }
-
-  createMarker(map , place) {
-    var placeLoc = place.geometry.location;
-    var marker = new google.maps.Marker({  map: map,  position: placeLoc,  animation: google.maps.Animation.BOUNCE });
-    google.maps.event.addListener(marker, 'click', (event) => {  this.infowindow.setContent(place.name); console.log(event)  });
-  }
+  presentMsg(msg:string ){  this.toast.create({  message: msg, position: 'top',  duration: 2000,  showCloseButton: true,  closeButtonText: 'Got it!',  }).present();  }
 
 }

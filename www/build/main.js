@@ -1,6 +1,165 @@
 webpackJsonp([0],{
 
-/***/ 109:
+/***/ 100:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MapProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var MapProvider = /** @class */ (function () {
+    function MapProvider(toast) {
+        this.toast = toast;
+        this.latLng = { lat: 39.9666628, lng: -76.749997 };
+        this.infowindow = new google.maps.InfoWindow;
+        this.geocoder = new google.maps.Geocoder;
+    }
+    MapProvider.prototype.AddSections = function (map) {
+        var red_zone_coords = [
+            { lat: 39.95565212917886, lng: -76.7499294208896 },
+            { lat: 39.9608331163431, lng: -76.73276424407959 },
+            { lat: 39.95631005406854, lng: -76.73211955303071 },
+            { lat: 39.95407308361964, lng: -76.73263453716157 },
+            { lat: 39.95361252179747, lng: -76.73465155834077 },
+            { lat: 39.9534480346808, lng: -76.73726939433931 },
+            { lat: 39.952263715763145, lng: -76.74035929912446 },
+            { lat: 39.951638650288956, lng: -76.74289130443452 },
+            { lat: 39.950651693173356, lng: -76.74512290233491 },
+            { lat: 39.94973052035041, lng: -76.74619578594087 },
+            { lat: 39.9506845919733, lng: -76.74731158489107 },
+            { lat: 39.955783714663156, lng: -76.7499294208896 },
+            { lat: 39.95565212917886, lng: -76.7499294208896 }
+        ];
+        var yellow_zone_coords = [
+            { lat: 39.95963247800763, lng: -76.73710488508317 },
+            { lat: 39.96101403254857, lng: -76.73779153059098 },
+            { lat: 39.96637065347542, lng: -76.748241416913 },
+            { lat: 39.96459450309773, lng: -76.74950741956803 },
+            { lat: 39.9641833505999, lng: -76.74963616560075 },
+            { lat: 39.96372285686692, lng: -76.74978636930558 },
+            { lat: 39.963393930872975, lng: -76.75010823438737 },
+            { lat: 39.95954537917795, lng: -76.75362729261491 },
+            { lat: 39.958492746118, lng: -76.7509236259279 },
+            { lat: 39.957308514557155, lng: -76.75158881376359 },
+            { lat: 39.95694666193423, lng: -76.75064467619035 },
+            { lat: 39.955786303634746, lng: -76.74992841307778 },
+            { lat: 39.959709851629874, lng: -76.73710488508317 },
+            { lat: 39.95963247800763, lng: -76.73710488508317 }
+        ];
+        var green_zone_coords = [
+            { lat: 39.956502, lng: -76.731667 },
+            { lat: 39.958344, lng: -76.725702 },
+            { lat: 39.9541, lng: -76.723556 },
+            { lat: 39.952159, lng: -76.722955 },
+            { lat: 39.950745, lng: -76.722398 },
+            { lat: 39.950547, lng: -76.722398 },
+            { lat: 39.949955, lng: -76.725788 },
+            { lat: 39.948705, lng: -76.729994 },
+            { lat: 39.953245, lng: -76.733684 },
+            { lat: 39.954166, lng: -76.732225 },
+            { lat: 39.955318, lng: -76.731796 },
+            { lat: 39.9566, lng: -76.731624 }
+        ];
+        this.red_zone = new google.maps.Polygon({
+            label: 'Section 1',
+            clickable: true,
+            paths: red_zone_coords,
+            strokeColor: '#A93226',
+            strokeOpacity: 0.8,
+            strokeWeight: 3,
+            fillColor: '#E74C3C',
+            fillOpacity: 0.35
+        });
+        this.yellow_zone = new google.maps.Polygon({
+            label: 'Section 2',
+            clickable: true,
+            paths: yellow_zone_coords,
+            strokeColor: '#D68910',
+            strokeOpacity: 0.8,
+            strokeWeight: 3,
+            fillColor: '#F1C40F',
+            fillOpacity: 0.35
+        });
+        this.green_zone = new google.maps.Polygon({
+            label: 'Section 3',
+            clickable: true,
+            paths: green_zone_coords,
+            strokeColor: '#145A32',
+            strokeOpacity: 0.8,
+            strokeWeight: 3,
+            fillColor: '#239B56',
+            fillOpacity: 0.35
+        });
+        this.red_zone.setMap(map);
+        this.yellow_zone.setMap(map);
+        this.green_zone.setMap(map);
+    };
+    /*
+      listPlaces(map,key:string) {
+        this.presentMessage(`Searching for ${key} in nearby!!`);
+          this.places = [];
+          let service = new google.maps.places.PlacesService(map);
+            service.textSearch({
+              location: this.latLng,
+              radius: '500',
+              query: key
+            }, (results,status) => {
+              if (status === google.maps.places.PlacesServiceStatus.OK) {
+                for (var i = 0; i < results.length; i++) {
+                  this.createMarker(map,results[i]);
+                  this.places.push(results[i]);
+                }
+              }
+            });
+          console.log(key);
+        }
+    */
+    MapProvider.prototype.addressToCoords = function (item, map) {
+        this.geocoder.geocode({ 'address': item.Address }, function (results, status) {
+            if (status == 'OK') {
+                map.setCenter(results[0].geometry.location);
+                this.marker = new google.maps.Marker({
+                    map: map,
+                    position: results[0].geometry.location
+                });
+                console.log(this.marker);
+            }
+            else {
+                console.log("Geocode was not successful for the following reason: " + status);
+            }
+        });
+        /*const content = `<p><b>${item.Name}</b></p>
+                         <p><b>Tel: </b>${item.Telephone}</p>
+                         <p><b>Address: </b>${item.Address}</p>`
+  
+        var infowindow = new google.maps.InfoWindow({ content: content });
+        google.maps.event.addListener(this.marker, 'click', (event)=> {  infowindow.open(map, this.marker);  });
+      */ 
+    };
+    MapProvider.prototype.presentMsg = function (msg) { this.toast.create({ message: msg, position: 'top', duration: 2000, showCloseButton: true, closeButtonText: 'Got it!', }).present(); };
+    MapProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */]])
+    ], MapProvider);
+    return MapProvider;
+}());
+
+//# sourceMappingURL=map.js.map
+
+/***/ }),
+
+/***/ 110:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -13,11 +172,11 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 109;
+webpackEmptyAsyncContext.id = 110;
 
 /***/ }),
 
-/***/ 151:
+/***/ 152:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -30,19 +189,78 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 151;
+webpackEmptyAsyncContext.id = 152;
 
 /***/ }),
 
-/***/ 195:
+/***/ 196:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DetailPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_map_map__ = __webpack_require__(100);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var DetailPage = /** @class */ (function () {
+    function DetailPage(mapCtrl, view, navCtrl, navParams) {
+        this.mapCtrl = mapCtrl;
+        this.view = view;
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.item = {};
+        this.latLng = { lat: 39.9623206, lng: -76.7291338 };
+    }
+    DetailPage.prototype.initMap = function () { this.map = new google.maps.Map(this.mapElement.nativeElement, { center: this.latLng, zoom: 20 }); };
+    DetailPage.prototype.ionViewDidLoad = function () {
+        var _this = this;
+        this.item = {
+            Name: this.navParams.get('Name'),
+            Telephone: this.navParams.get('Telephone'),
+            Address: this.navParams.get('Address'),
+            Desc: this.navParams.get('Desc')
+        };
+        this.initMap();
+        setTimeout(function () { _this.mapCtrl.addressToCoords(_this.item, _this.map); }, 1500);
+    };
+    DetailPage.prototype.close = function () { this.view.dismiss(); };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('map'),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
+    ], DetailPage.prototype, "mapElement", void 0);
+    DetailPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-detail',template:/*ion-inline-start:"C:\Users\David Ojo\Desktop\Media\Enterprise Projects\york-app\menu\src\pages\detail\detail.html"*/'<ion-header>\n  <ion-navbar color="dark">\n    <ion-title>{{item.Name}}</ion-title>\n    <ion-buttons end> \n      <button ion-button clear icon-only (click)="close()"> <ion-icon  name="close"></ion-icon></button> \n    </ion-buttons>\n  </ion-navbar>\n</ion-header> \n\n<ion-content padding>\n  <h1>{{ item.Name }}</h1>\n  <ion-row>\n    <ion-col *ngIf="item.Telephone != 0">\n    <h2><b>Tel: </b>{{ item.Telephone }}</h2> \n  </ion-col>\n  <ion-col>\n    <h2><b>Address: </b>{{ item.Address }}</h2>\n  </ion-col>\n  </ion-row>\n  <ion-row>\n    <ion-col>\n    <h3>{{ item.Desc }}</h3>\n  </ion-col>\n  <ion-col> \n    <div #map id="map"></div>\n  </ion-col>\n  </ion-row>\n</ion-content>\n'/*ion-inline-end:"C:\Users\David Ojo\Desktop\Media\Enterprise Projects\york-app\menu\src\pages\detail\detail.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_map_map__["a" /* MapProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]])
+    ], DetailPage);
+    return DetailPage;
+}());
+
+//# sourceMappingURL=detail.js.map
+
+/***/ }),
+
+/***/ 197:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_map_map__ = __webpack_require__(196);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_services__ = __webpack_require__(197);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_map_map__ = __webpack_require__(100);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_services__ = __webpack_require__(198);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -194,9 +412,9 @@ var HomePage = /** @class */ (function () {
     ], HomePage.prototype, "mapElement", void 0);
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"C:\Users\David Ojo\Desktop\Media\Enterprise Projects\york-app\menu\src\pages\home\home.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>York City App</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <div #map id="map"></div>\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\David Ojo\Desktop\Media\Enterprise Projects\york-app\menu\src\pages\home\home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"C:\Users\David Ojo\Desktop\Media\Enterprise Projects\york-app\menu\src\pages\home\home.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>York City PWA</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <div #map id="map"></div>\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\David Ojo\Desktop\Media\Enterprise Projects\york-app\menu\src\pages\home\home.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ToastController */], __WEBPACK_IMPORTED_MODULE_2__providers_map_map__["a" /* MapProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */], __WEBPACK_IMPORTED_MODULE_2__providers_map_map__["a" /* MapProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]])
     ], HomePage);
     return HomePage;
 }());
@@ -205,156 +423,7 @@ var HomePage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 196:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MapProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var MapProvider = /** @class */ (function () {
-    function MapProvider(toast) {
-        this.toast = toast;
-        this.latLng = { lat: 39.9666628, lng: -76.749997 };
-        this.infowindow = new google.maps.InfoWindow;
-    }
-    MapProvider.prototype.AddSections = function (map) {
-        var red_zone_coords = [
-            { lat: 39.95565212917886, lng: -76.7499294208896 },
-            { lat: 39.9608331163431, lng: -76.73276424407959 },
-            { lat: 39.95631005406854, lng: -76.73211955303071 },
-            { lat: 39.95407308361964, lng: -76.73263453716157 },
-            { lat: 39.95361252179747, lng: -76.73465155834077 },
-            { lat: 39.9534480346808, lng: -76.73726939433931 },
-            { lat: 39.952263715763145, lng: -76.74035929912446 },
-            { lat: 39.951638650288956, lng: -76.74289130443452 },
-            { lat: 39.950651693173356, lng: -76.74512290233491 },
-            { lat: 39.94973052035041, lng: -76.74619578594087 },
-            { lat: 39.9506845919733, lng: -76.74731158489107 },
-            { lat: 39.955783714663156, lng: -76.7499294208896 },
-            { lat: 39.95565212917886, lng: -76.7499294208896 }
-        ];
-        var yellow_zone_coords = [
-            { lat: 39.95963247800763, lng: -76.73710488508317 },
-            { lat: 39.96101403254857, lng: -76.73779153059098 },
-            { lat: 39.96637065347542, lng: -76.748241416913 },
-            { lat: 39.96459450309773, lng: -76.74950741956803 },
-            { lat: 39.9641833505999, lng: -76.74963616560075 },
-            { lat: 39.96372285686692, lng: -76.74978636930558 },
-            { lat: 39.963393930872975, lng: -76.75010823438737 },
-            { lat: 39.95954537917795, lng: -76.75362729261491 },
-            { lat: 39.958492746118, lng: -76.7509236259279 },
-            { lat: 39.957308514557155, lng: -76.75158881376359 },
-            { lat: 39.95694666193423, lng: -76.75064467619035 },
-            { lat: 39.955786303634746, lng: -76.74992841307778 },
-            { lat: 39.959709851629874, lng: -76.73710488508317 },
-            { lat: 39.95963247800763, lng: -76.73710488508317 }
-        ];
-        var green_zone_coords = [
-            { lat: 39.956502, lng: -76.731667 },
-            { lat: 39.958344, lng: -76.725702 },
-            { lat: 39.9541, lng: -76.723556 },
-            { lat: 39.952159, lng: -76.722955 },
-            { lat: 39.950745, lng: -76.722398 },
-            { lat: 39.950547, lng: -76.722398 },
-            { lat: 39.949955, lng: -76.725788 },
-            { lat: 39.948705, lng: -76.729994 },
-            { lat: 39.953245, lng: -76.733684 },
-            { lat: 39.954166, lng: -76.732225 },
-            { lat: 39.955318, lng: -76.731796 },
-            { lat: 39.9566, lng: -76.731624 }
-        ];
-        this.red_zone = new google.maps.Polygon({
-            label: 'Section 1',
-            clickable: true,
-            paths: red_zone_coords,
-            strokeColor: '#A93226',
-            strokeOpacity: 0.8,
-            strokeWeight: 3,
-            fillColor: '#E74C3C',
-            fillOpacity: 0.35
-        });
-        this.yellow_zone = new google.maps.Polygon({
-            label: 'Section 2',
-            clickable: true,
-            paths: yellow_zone_coords,
-            strokeColor: '#D68910',
-            strokeOpacity: 0.8,
-            strokeWeight: 3,
-            fillColor: '#F1C40F',
-            fillOpacity: 0.35
-        });
-        this.green_zone = new google.maps.Polygon({
-            label: 'Section 3',
-            clickable: true,
-            paths: green_zone_coords,
-            strokeColor: '#145A32',
-            strokeOpacity: 0.8,
-            strokeWeight: 3,
-            fillColor: '#239B56',
-            fillOpacity: 0.35
-        });
-        this.red_zone.setMap(map);
-        this.yellow_zone.setMap(map);
-        this.green_zone.setMap(map);
-    };
-    // SectionContent(content,map) {
-    //  this.infowindow.setContent(content);
-    //this.infowindow.setPosition(loc);
-    //  this.infowindow.open(map);
-    //  }
-    MapProvider.prototype.listPlaces = function (map, key) {
-        var _this = this;
-        this.presentMessage("Searching for " + key + " in nearby!!");
-        this.places = [];
-        var service = new google.maps.places.PlacesService(map);
-        service.textSearch({
-            location: this.latLng,
-            radius: '500',
-            query: key
-        }, function (results, status) {
-            if (status === google.maps.places.PlacesServiceStatus.OK) {
-                for (var i = 0; i < results.length; i++) {
-                    _this.createMarker(map, results[i]);
-                    _this.places.push(results[i]);
-                }
-            }
-        });
-        console.log(key);
-    };
-    MapProvider.prototype.presentMessage = function (msg) { this.toast.create({ message: msg, position: 'top', duration: 2000, showCloseButton: true, closeButtonText: 'Got it!', }).present(); };
-    MapProvider.prototype.clearMarkers = function () { for (var i = 0; i < this.places.length; i++) {
-        this.places[i].setMap(null);
-    } this.places.length = 0; };
-    MapProvider.prototype.createMarker = function (map, place) {
-        var _this = this;
-        var placeLoc = place.geometry.location;
-        var marker = new google.maps.Marker({ map: map, position: placeLoc, animation: google.maps.Animation.BOUNCE });
-        google.maps.event.addListener(marker, 'click', function (event) { _this.infowindow.setContent(place.name); console.log(event); });
-    };
-    MapProvider = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ToastController */]])
-    ], MapProvider);
-    return MapProvider;
-}());
-
-//# sourceMappingURL=map.js.map
-
-/***/ }),
-
-/***/ 197:
+/***/ 198:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -392,9 +461,9 @@ var ServicesPage = /** @class */ (function () {
     ServicesPage.prototype.close = function () { this.view.dismiss(); };
     ServicesPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-services',template:/*ion-inline-start:"C:\Users\David Ojo\Desktop\Media\Enterprise Projects\york-app\menu\src\pages\services\services.html"*/'<ion-header>\n  <ion-navbar [color]="colour">\n    <ion-title>{{zone_name}} Services</ion-title>\n    <ion-buttons end> \n      <button ion-button clear icon-only (click)="close()"> <ion-icon  name="close"></ion-icon></button> \n    </ion-buttons>\n  </ion-navbar>\n</ion-header> \n\n<ion-content padding>\n  <ion-list>\n    <ion-item *ngFor="let item of data" text-wrap>\n          <h1>{{item.Name}}</h1>\n          <br>\n          <ion-row>\n            <ion-col *ngIf="item.Telephone != 0">\n              <h2><b>Tel: </b>{{item.Telephone}}</h2>\n            </ion-col>\n            <ion-col *ngIf="item.Address != 0">\n              <h2><b>Address: </b>{{item.Address}}</h2>\n            </ion-col>\n          </ion-row>\n          <p>{{item.Desc}}</p>\n        <!--  <button ion-button icon-only item-end clear (click)="showDetail(item)">\n            <ion-icon name="expand" [color]="colour"></ion-icon>\n          </button> -->\n        </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"C:\Users\David Ojo\Desktop\Media\Enterprise Projects\york-app\menu\src\pages\services\services.html"*/,
+            selector: 'page-services',template:/*ion-inline-start:"C:\Users\David Ojo\Desktop\Media\Enterprise Projects\york-app\menu\src\pages\services\services.html"*/'<ion-header>\n  <ion-navbar [color]="colour">\n    <ion-title>{{zone_name}} Services</ion-title>\n    <ion-buttons end> \n      <button ion-button clear icon-only (click)="close()"> <ion-icon  name="close"></ion-icon></button> \n    </ion-buttons>\n  </ion-navbar>\n</ion-header> \n\n<ion-content padding>\n  <ion-list>\n    <ion-item *ngFor="let item of data" text-wrap>\n          <h1>{{item.Name}}</h1>\n          <p>{{item.Desc}}</p>\n          <br>\n            <ion-row>\n              <ion-col *ngIf="item.Telephone != 0">\n                <ion-badge [color]="colour">{{item.Telephone}}</ion-badge>\n              </ion-col>\n              <ion-col *ngIf="item.Address != 0">\n                <ion-badge [color]="colour">{{item.Address}}</ion-badge>\n              </ion-col>\n              <ion-col></ion-col>\n              <ion-col></ion-col>\n            </ion-row>\n        </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"C:\Users\David Ojo\Desktop\Media\Enterprise Projects\york-app\menu\src\pages\services\services.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_services_services__["a" /* ServicesProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_services_services__["a" /* ServicesProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]])
     ], ServicesPage);
     return ServicesPage;
 }());
@@ -403,13 +472,13 @@ var ServicesPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 198:
+/***/ 199:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(199);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(222);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -417,7 +486,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 221:
+/***/ 222:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -425,13 +494,13 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(30);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(263);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(195);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_services_services__ = __webpack_require__(197);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_detail_detail__ = __webpack_require__(272);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_status_bar__ = __webpack_require__(191);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_splash_screen__ = __webpack_require__(194);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_map_map__ = __webpack_require__(196);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(264);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(197);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_services_services__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_detail_detail__ = __webpack_require__(196);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_status_bar__ = __webpack_require__(192);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_splash_screen__ = __webpack_require__(195);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_map_map__ = __webpack_require__(100);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_services_services__ = __webpack_require__(99);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -490,17 +559,18 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 263:
+/***/ 264:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(191);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(194);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(192);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(195);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_services_services__ = __webpack_require__(99);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_home_home__ = __webpack_require__(195);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_detail_detail__ = __webpack_require__(196);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_home_home__ = __webpack_require__(197);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -510,6 +580,42 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
 
 
 
@@ -517,17 +623,44 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var MyApp = /** @class */ (function () {
-    function MyApp(serviceCtrl, platform, statusBar, splashScreen) {
+    function MyApp(loadingCtrl, modalCtrl, serviceCtrl, platform, statusBar, splashScreen) {
+        this.loadingCtrl = loadingCtrl;
+        this.modalCtrl = modalCtrl;
         this.serviceCtrl = serviceCtrl;
         this.platform = platform;
         this.statusBar = statusBar;
         this.splashScreen = splashScreen;
-        this.rootPage = __WEBPACK_IMPORTED_MODULE_5__pages_home_home__["a" /* HomePage */];
+        this.rootPage = __WEBPACK_IMPORTED_MODULE_6__pages_home_home__["a" /* HomePage */];
         this.services = [];
         this.searchTerm = '';
         this.initializeApp();
+        this.handleSplashScreen();
         this.loadServices();
     }
+    MyApp.prototype.handleSplashScreen = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var error_1, splash;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, this.platform.ready()];
+                    case 1:
+                        _a.sent();
+                        return [3 /*break*/, 3];
+                    case 2:
+                        error_1 = _a.sent();
+                        console.error('Platform initialization bug');
+                        return [3 /*break*/, 3];
+                    case 3:
+                        splash = document.getElementById('splash-screen');
+                        splash.style.opacity = '0';
+                        setTimeout(function () { splash.remove(); }, 300);
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
     MyApp.prototype.loadServices = function () { return this.services = this.serviceCtrl.services; };
     MyApp.prototype.query = function () {
         var _this = this;
@@ -536,6 +669,7 @@ var MyApp = /** @class */ (function () {
             return item.Name.toLowerCase().indexOf(_this.searchTerm.toLowerCase()) > -1;
         });
     };
+    MyApp.prototype.open = function (service) { this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_5__pages_detail_detail__["a" /* DetailPage */], service).present(); };
     MyApp.prototype.initializeApp = function () {
         var _this = this;
         this.platform.ready().then(function () {
@@ -546,60 +680,18 @@ var MyApp = /** @class */ (function () {
         });
     };
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* Nav */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* Nav */])
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Nav */]),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Nav */])
     ], MyApp.prototype, "nav", void 0);
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\David Ojo\Desktop\Media\Enterprise Projects\york-app\menu\src\app\app.html"*/'<ion-menu [content]="content">\n  <ion-header>\n    <ion-toolbar>\n      <ion-title>Menu</ion-title>\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-content>\n      <ion-item class="search">\n          <ion-searchbar \n                  spellcheck=true\n                  animated=true\n                  (ionInput)=query()\n                  showCancelButton=true\n                  [(ngModel)]=searchTerm>\n          </ion-searchbar>\n      </ion-item>\n      <ion-list>\n        <ion-item *ngFor="let item of services">\n          <h1>{{ item.Name }}</h1>\n          <h2 *ngIf="item.Telephone != \'\'"><b>Tel: {{item.Telephone}}</b></h2>\n          <p>{{ item.Desc }}</p>\n        </ion-item>\n      </ion-list> \n      <p class="results" *ngIf="services.length == 0">No Results</p>\n    </ion-content>\n\n</ion-menu>\n\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>'/*ion-inline-end:"C:\Users\David Ojo\Desktop\Media\Enterprise Projects\york-app\menu\src\app\app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\David Ojo\Desktop\Media\Enterprise Projects\york-app\menu\src\app\app.html"*/'<ion-menu [content]="content">\n<ion-header>\n    <ion-toolbar color="primary">\n        <ion-searchbar \n                spellcheck=true\n                animated=true\n                (ionInput)=query()\n                showCancelButton=true\n                [(ngModel)]=searchTerm>\n        </ion-searchbar>\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-content>\n      <ion-list> \n        <button id="btn" ion-item *ngFor="let item of services" (click)="open(item)">\n            <h1>{{ item.Name }}</h1>\n            <p>{{ item.Desc }}</p>\n            <ion-badge color="primary" *ngIf="item.Telephone != \'\'">{{item.Telephone}}</ion-badge>\n          </button>\n      </ion-list> \n      <h2 class="results" *ngIf="services.length == 0">No Results</h2>\n    </ion-content>\n</ion-menu>\n\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>'/*ion-inline-end:"C:\Users\David Ojo\Desktop\Media\Enterprise Projects\york-app\menu\src\app\app.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__providers_services_services__["a" /* ServicesProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* ModalController */], __WEBPACK_IMPORTED_MODULE_4__providers_services_services__["a" /* ServicesProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
     return MyApp;
 }());
 
 //# sourceMappingURL=app.component.js.map
-
-/***/ }),
-
-/***/ 272:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DetailPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var DetailPage = /** @class */ (function () {
-    function DetailPage(view, navCtrl, navParams) {
-        this.view = view;
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.item = {};
-    }
-    DetailPage.prototype.ionViewWillLoad = function () {
-        this.item = this.navParams.get('service');
-    };
-    DetailPage.prototype.close = function () { this.view.dismiss(); };
-    DetailPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-detail',template:/*ion-inline-start:"C:\Users\David Ojo\Desktop\Media\Enterprise Projects\york-app\menu\src\pages\detail\detail.html"*/'<ion-header>\n  <ion-navbar color="dark">\n    <ion-title>{{item.Name}}</ion-title>\n    <ion-buttons end> \n      <button ion-button clear icon-only (click)="close()"> <ion-icon  name="close"></ion-icon></button> \n    </ion-buttons>\n  </ion-navbar>\n</ion-header> \n\n<ion-content padding>\n  <h1>{{item.Name}}</h1>\n  <h2>{{item.Telephone}} || {{item.Address</h2>\n  <h3>{{item.Desc}}</h3>\n</ion-content>\n'/*ion-inline-end:"C:\Users\David Ojo\Desktop\Media\Enterprise Projects\york-app\menu\src\pages\detail\detail.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
-    ], DetailPage);
-    return DetailPage;
-}());
-
-//# sourceMappingURL=detail.js.map
 
 /***/ }),
 
@@ -609,7 +701,7 @@ var DetailPage = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ServicesProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__ = __webpack_require__(271);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__ = __webpack_require__(272);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -636,7 +728,7 @@ var ServicesProvider = /** @class */ (function () {
                 Desc: "211 Maryland is a critical UWCM service that skillfully and compassionay links people in need with community resources  It provides statewide 24hour information and referral to a wide variety of health and human services  Services are primarily provided"
             }, {
                 Name: "4th Congressional District Internship Association",
-                Address: "7177930983",
+                Address: "",
                 Telephone: "7177930983",
                 Desc: "12 week congressional internship during summer  6 weeks in DC office 6 weeks in a district office housing at a DC University provided while serving in Washington no housing provided during district portion weekly stipend for meals and transportation"
             }, {
@@ -3002,5 +3094,5 @@ var ServicesProvider = /** @class */ (function () {
 
 /***/ })
 
-},[198]);
+},[199]);
 //# sourceMappingURL=main.js.map

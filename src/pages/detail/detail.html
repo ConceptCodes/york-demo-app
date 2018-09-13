@@ -8,7 +8,21 @@
 </ion-header> 
 
 <ion-content padding>
-  <h1>{{item.Name}}</h1>
-  <h2>{{item.Telephone}} || {{item.Address</h2>
-  <h3>{{item.Desc}}</h3>
+  <h1>{{ item.Name }}</h1>
+  <ion-row>
+    <ion-col *ngIf="item.Telephone != 0">
+    <h2><b>Tel: </b>{{ item.Telephone }}</h2> 
+  </ion-col>
+  <ion-col>
+    <h2><b>Address: </b>{{ item.Address }}</h2>
+  </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+    <h3>{{ item.Desc }}</h3>
+  </ion-col>
+  <ion-col> 
+    <div #map id="map"></div>
+  </ion-col>
+  </ion-row>
 </ion-content>
