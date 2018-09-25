@@ -1,0 +1,128 @@
+[{ 
+"Northeast Neighborood": { "n"  : "Arch St York, PA", "e"  : "Ridge Ave York, PA", "s"  : "Market St York, PA", "w"  : "Queen St York, PA"},
+"Allen Field Neighborood": { "n"  : "Hay St York, PA", "e"  : "East St York, PA", "s"  : "Market St York, PA", "w"  : "Ridge Ave York, PA"},
+"Albemarle Neighborood": { "n"  : "Market St York, PA", "e"  : "Harrison St York, PA", "s"  : "Princess St York, PA", "w"  : "Girard Ave York, PA"},
+"East Neighborood": { "n"  : "Princess St York, PA", "e"  : "Harrison St York, PA", "s"  : "Boundary Ave York, PA", "w"  : "Girard Ave York, PA"},
+"Hannah Penn Neighborood": { "n"  : "King St York, PA", "e"  : "Girard Ave York, PA", "s"  : "Cottage Pl York, PA", "w"  : "Queen St York, PA"},
+"South Neighborood": { "n"  : "South St York, PA", "e"  : "Edgar St York, PA", "s"  : "Rathton Rd York, PA", "w"  : "George St York, PA"},
+"Southwest Neighborood": { "n"  : "Lafayette St York, PA", "e"  : "George St York, PA", "s"  : "Springettsbury Ave York, PA", "w"  : "Jessop Pl York, PA"},
+"West Neighborood": { "n"  : "Linden Ave York, PA", "e"  : "Belvidere Ave York, PA", "s"  : "College Ave York, PA", "w"  : "west of Richland Ave York, PA"},
+"Salem Square Neighborood":{ "n"  : "Market St York, PA", "e"  : "Newberry St York, PA", "s"  : "College Ave York, PA", "w"  : "Belvidere Ave York, PA"},
+"West End Corridor": { "n"  : "Linden Ave York, PA", "e"  : "Belvidere Ave York, PA", "s"  : "Market St York, PA", "w"  : "Newberry St York, PA"},
+"Avenues Neighborood": { "n"  : "Texas Ave York, PA", "e"  : "Penn St York, PA", "s"  : "Linden Ave York, PA", "w"  : "Carlisle Ave York, PA"},
+"Willis Run Neighborood": { "n"  : "Parkway Blvd York, PA", "e"  : "Madison Ave York, PA", "s"  : "Roosevelt Av York, PA", "w"  : "Roosevelt Av York, PA"},
+"Devers Neighborood": { "n"  : "Vogelsong Rd York, PA", "e"  : "Pennsylvania Ave York, PA", "s"  : "Parkway Blvd York, PA", "w"  : "Roosevelt Av York, PA"},
+"Northwest Neighborood": { "n"  : "Parkway Blvd York, PA", "e"  : "George St York, PA", "s"  : "Stevens Ave York, PA", "w"  : "Newberry St York, PA"},
+"Grimes Gym Neighborood": { "n"  : "King St York, PA", "e"  : "Queen St York, PA", "s"  : "South St York, PA", "w"  : "Oak Ln York, PA"},
+"Downtown Neighborood": { "n"  : "Arch St York, PA", "e"  : "Queen St York, PA", "s"  : "King St York, PA", "w"  : "Pershing Ave York PA" }
+}]
+
+/*
+"Northeast Neighborood"
+[{ lat: 39.971684,lng:  -76.717417},
+{ lat: 39.971653,lng:  -76.717391},
+{ lat: 39.969087,lng:  -76.727733},
+{ lat: 39.967443,lng:  -76.730137},
+{ lat: 39.957071,lng:  -76.745212},
+{ lat: 39.952046,lng:  -76.716403}]
+
+"Allen Field Neighborood"
+[{ lat: 39.971684,lng:  -76.717417},
+{ lat: 39.971684,lng:  -76.717417},
+{ lat: 39.977385,lng:  -76.702811},
+{ lat: 39.957071,lng:  -76.745212},
+{ lat: 39.971684,lng:  -76.717417}]
+
+"Albemarle Neighborood"
+[{ lat: 39.982436,lng:  -76.704143},
+{ lat: 39.964677,lng:  -76.710495},
+{ lat: 39.952966,lng:  -76.74723},
+{ lat: 39.956519,lng:  -76.74723}]
+
+"East Neighborood"
+[{ lat: 39.960993,lng:  -76.712554},
+{ lat: 39.982699,lng:  -76.706203},
+{ lat: 39.957966,lng:  -76.732296}]
+
+"Hannah Penn Neighborood"
+[{ lat: 39.954828,lng:  -76.747208}
+{ lat: 39.954828,lng:  -76.747208},
+{ lat: 39.961058,lng:  -76.712297},
+{ lat: 39.95451,lng:  -76.718561},
+{ lat: 39.952046,lng:  -76.716403}]
+"South Neighborood"
+[{ lat: 39.959932,lng:  -76.712176},
+{ lat: 39.956166,lng:  -76.715347},
+{ lat: 39.948988,lng:  -76.709565},
+{ lat: 39.976583,lng:  -76.732815}]
+
+"Southwest Neighborood"
+[{ lat: 39.961385,lng:  -76.74645},
+{ lat: 39.961385,lng:  -76.74645},
+{ lat: 39.976583,lng:  -76.732815},
+{ lat: 39.953695,lng:  -76.713221},
+{ lat: 39.951114,lng:  -76.73129}]
+
+"west Neighborhood"
+[{ lat: 39.948665,lng:  -76.745087},
+{ lat: 39.960744,lng:  -76.748914},
+{ lat: 39.960744,lng:  -76.748914},
+{ lat: 39.948665,lng:  -76.745087},
+{ lat: 39.952372,lng:  -76.744734},
+{ lat: 39.961385,lng:  -76.74645}]
+
+"Salem Square Neighborhood"
+[{ lat: 39.957071,lng:  -76.745212},
+{ lat: 39.957071,lng:  -76.745212},
+{ lat: 39.965218,lng:  -76.737807},
+{ lat: 39.952372,lng:  -76.744734},
+{ lat: 39.960744,lng:  -76.748914}]
+
+"West End Corridor"
+[{ lat: 39.961385,lng:  -76.74645},
+{ lat: 39.961385,lng:  -76.74645},
+{ lat: 39.960744,lng:  -76.748914},
+{ lat: 39.957071,lng:  -76.745212},
+{ lat: 39.965218,lng:  -76.737807}]
+
+"Avenues Neighborhood"
+[{ lat: 39.962285,lng:  -76.754586},
+{ lat: 39.962285,lng:  -76.754586},
+{ lat: 39.963915,lng:  -76.739685},
+{ lat: 39.961385,lng:  -76.74645},
+{ lat: 39.958928,lng:  -76.752398}]
+
+"Willis Run Neighborhood"
+[{ lat: 39.969591,lng:  -76.741743},
+{ lat: 39.969591,lng:  -76.741743},
+{ lat: 39.963982,lng:  -76.745956},
+{ lat: 39.97103,lng:  -76.751483}]
+
+"Devers Neighborood"
+[{ lat: 39.983382,lng:  -76.752612},
+{ lat: 39.983382,lng:  -76.752612},
+{ lat: 39.975392,lng:  -76.743618},
+{ lat: 39.969591,lng:  -76.741743},
+{ lat: 39.97103,lng:  -76.751483}]
+
+"Northwest Neighborhood"
+[{ lat: 39.969591,lng:  -76.741743},
+{ lat: 39.969591,lng:  -76.741743},
+{ lat: 39.976583,lng:  -76.732815},
+{ lat: 39.966445,lng:  -76.732962},
+{ lat: 39.965218,lng:  -76.737807}]
+
+"Grimes Gym Neighborhood"
+[{ lat: 39.954828,lng:  -76.747208},
+{ lat: 39.954828,lng:  -76.747208},
+{ lat: 39.952046,lng:  -76.716403},
+{ lat: 39.959932,lng:  -76.712176},
+{ lat: 39.956788,lng:  -76.730424}]
+
+"Downtown Neighborhood"
+[{ lat: 39.969201,lng:  -76.72723},
+{ lat: 39.969201,lng:  -76.72723},
+{ lat: 39.952046,lng:  -76.716403},
+{ lat: 39.954828,lng:  -76.747208},
+{ lat: 39.966737,lng:  -76.734176}]
+*/
